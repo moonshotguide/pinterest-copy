@@ -1,29 +1,33 @@
 import React from "react";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import LoginGithub from 'react-login-github';
 import { useNavigate } from "react-router-dom";
 import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
 import { client } from "../client";
 import jwt_decode from "jwt-decode";
-// import { createOrGetUser } from "../utils/index.ts";
 
 const Login = () => {
+
+  const onSuccess = response => console.log(response);
+  const onFailure = response => console.error(response);
+
   const navigate = useNavigate();
   const responseGoogle = (response) => {
-    
-    const decoded =  jwt_decode(response.credential);
+
+    const decoded = jwt_decode(response.credential);
     const { name, picture, sub } = decoded;
     const doc = {
-        _id : sub,
-        _type : 'user',
-        userName: name,
-        image: picture
+      _id: sub,
+      _type: 'user',
+      userName: name,
+      image: picture
     }
     console.log(decoded);
     client.createIfNotExists(doc)
-        .then(() => {
-            navigate('/', { replace:true })
-        })
+      .then(() => {
+        navigate('/', { replace: true })
+      })
   }
 
 
@@ -50,12 +54,18 @@ const Login = () => {
               clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
             >
               <div>
-                  <GoogleLogin
-                    onSuccess={responseGoogle}
-                    onError={responseGoogle}
-                  />
+                <GoogleLogin
+                  onSuccess={responseGoogle}
+                  onError={responseGoogle}
+                />
               </div>
             </GoogleOAuthProvider>
+          </div>
+          <div className="shadow-2xl">
+            <LoginGithub clientId="8fa7aea4b88b31300ae4"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+            />
           </div>
         </div>
       </div>
