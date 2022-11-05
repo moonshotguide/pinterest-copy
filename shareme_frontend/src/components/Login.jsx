@@ -30,6 +30,8 @@ const Login = () => {
       })
   }
 
+  // https://levelup.gitconnected.com/how-to-implement-login-with-github-in-a-react-app-bd3d704c64fc
+  
 
   return (
     <div className="flex justify-start items-center flex-col h-screen">
@@ -55,14 +57,14 @@ const Login = () => {
             >
               <div>
                 <GoogleLogin
-                  onSuccess={responseGoogle}
+                  onSuccess={(response) => {console.log(response)}}
                   onError={responseGoogle}
                 />
               </div>
             </GoogleOAuthProvider>
           </div>
           <div className="shadow-2xl">
-            <LoginGithub clientId="8fa7aea4b88b31300ae4"
+            <LoginGithub clientId={process.env.REACT_APP_GITHUB_API_CLIENT_ID}
               onSuccess={onSuccess}
               onFailure={onFailure}
             />
