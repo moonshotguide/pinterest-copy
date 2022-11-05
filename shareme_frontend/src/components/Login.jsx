@@ -1,6 +1,6 @@
 import React from "react";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import LoginGithub from 'react-login-github';
+// import LoginGithub from 'react-login-github';
 import { useNavigate } from "react-router-dom";
 import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
@@ -8,11 +8,8 @@ import { client } from "../client";
 import jwt_decode from "jwt-decode";
 
 const Login = () => {
-
-  const onSuccess = response => console.log(response);
-  const onFailure = response => console.error(response);
-
   const navigate = useNavigate();
+
   const responseGoogle = (response) => {
 
     const decoded = jwt_decode(response.credential);
@@ -31,7 +28,7 @@ const Login = () => {
   }
 
   // https://levelup.gitconnected.com/how-to-implement-login-with-github-in-a-react-app-bd3d704c64fc
-  
+
 
   return (
     <div className="flex justify-start items-center flex-col h-screen">
@@ -57,17 +54,17 @@ const Login = () => {
             >
               <div>
                 <GoogleLogin
-                  onSuccess={(response) => {console.log(response)}}
+                  onSuccess={(response) => { console.log(response) }}
                   onError={responseGoogle}
                 />
               </div>
             </GoogleOAuthProvider>
           </div>
           <div className="shadow-2xl">
-            <LoginGithub clientId={process.env.REACT_APP_GITHUB_API_CLIENT_ID}
-              onSuccess={onSuccess}
-              onFailure={onFailure}
-            />
+            {/* <LoginGithub clientId={process.env.REACT_APP_GITHUB_API_CLIENT_ID}
+              onSuccess={response => console.log(response)}
+              onFailure={response => console.log(response)}
+            /> */}
           </div>
         </div>
       </div>
