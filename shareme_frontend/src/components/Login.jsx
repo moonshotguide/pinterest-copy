@@ -54,7 +54,7 @@ const Login = () => {
             >
               <div>
                 <GoogleLogin
-                  onSuccess={(response) => { console.log(response) }}
+                  onSuccess={responseGoogle}
                   onError={responseGoogle}
                 />
               </div>
@@ -62,8 +62,8 @@ const Login = () => {
           </div>
           <div className="shadow-2xl">
             {/* <LoginGithub clientId={process.env.REACT_APP_GITHUB_API_CLIENT_ID}
-              onSuccess={response => console.log(response)}
-              onFailure={response => console.log(response)}
+              onSuccess={(response) => { console.log(response)}}
+              onFailure={(response) => { console.log(response)}}
             /> */}
           </div>
         </div>
