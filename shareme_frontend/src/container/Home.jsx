@@ -22,7 +22,9 @@ const Home = () => {
           className="cursor-pointer"
           onClick={() => setToggleSidebar(false)}
         />
-        <Link />
+        <Link to='/'>
+          <img src={logo} alt="logo" />
+        </Link> 
         {/* 1:16:04 */}
       </div>
     </div>
