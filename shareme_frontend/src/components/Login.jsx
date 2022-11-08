@@ -26,10 +26,7 @@ const Login = () => {
         navigate('/', { replace: true })
       })
   }
-
   // https://levelup.gitconnected.com/how-to-implement-login-with-github-in-a-react-app-bd3d704c64fc
-
-
   return (
     <div className="flex justify-start items-center flex-col h-screen">
       <div className=" relative w-full h-full">
