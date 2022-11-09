@@ -1,7 +1,7 @@
 /* @type {import('tailwindcss').Config} */
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       margin: {
@@ -38,6 +38,15 @@ module.exports = {
         210: "210px",
         350: "350px",
         620: "620px",
+      },
+      colors: {
+        'd-moon': '#05070A',
+        'd-moon-from': '#005c793d',
+        'd-moon-to': '#1a00283d',
+        'd-button': '#19112c',
+        'd-button-from': '#ae3f3780',
+        'd-button-to': '#16568780',
+        'd-button-text': '#E8CDF5',
       },
       textColor: {
         lightGray: "#F1EFEE",
