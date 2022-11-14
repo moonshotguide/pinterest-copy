@@ -42,16 +42,20 @@ const Home = () => {
             className="cursor-pointer"
             onClick={() => setToggleSidebar(true)}
           />
+          {/* Logo Shareme */}
           <Link to="/">
             <img src={  document.documentElement.classList == "dark" ? logoWhite : logo } alt="logo" className="w-1/2" />
           </Link>
-          <Link to={`user-profile/${user?._id}`}>
-            <img
-              src={user?.image}
-              alt="logo"
-              className="w-24 rounded-md border-solid border-2 border-violet-500"
-            />
-          </Link>
+
+          {/* Image Profile */}
+            <Link to={`user-profile/${user?._id}`} className="flex flex-col items-center ">
+              <img
+                src={user?.image}
+                alt="logo"
+                className="w-14 rounded-full border-solid border-2 border-cyan-400"
+              />
+              <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400">{user?.userName}</h1>
+            </Link>
         </div>
         {toggleSidebar && (
           <div className="fixed w-4/5 bg-white dark:bg-d-moon bg-gradient-to-b from-d-moon-from to-d-moon-to dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
