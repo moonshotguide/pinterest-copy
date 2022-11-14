@@ -27,8 +27,8 @@ const Sidebar = ({ user, closeToggle }) => {
   return (
     <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 hide-scrollbar">
       <div className="flex flex-col">
-        <Link 
-        to="/" 
+        <Link
+        to="/"
         className="flex px-5 gap-2 my-6 pt-1 w-190 items-center"
         onClick={handleCloseSidebar}
         >
@@ -45,7 +45,7 @@ const Sidebar = ({ user, closeToggle }) => {
           </NavLink>
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">Discover categories</h3>
           { categories.slice(0, categories.length - 1).map((category) => (
-            <NavLink 
+            <NavLink
               to={`/category/${category.name}`}
               className={({ isActive }) => ( isActive ? isActiveStyle : isNotActiveStyle ) }
               onClick={handleCloseSidebar}
@@ -59,5 +59,10 @@ const Sidebar = ({ user, closeToggle }) => {
     </div>
   );
 };
+// Modern React Web Development Full Course - 12 Hours | 4 Real Industry Web Applications
+// 1:40:32
+// https://www.bing.com/videos/search?q=react+modern+12+hours&docid=607997018356260593&mid=051F33899DC6862EFB52051F33899DC6862EFB52&view=detail&FORM=VIRE
+// Texte Gradient
+// https://redpixelthemes.com/blog/tailwindcss-gradient-text/
 
 export default Sidebar;
