@@ -16,9 +16,7 @@ const Home = () => {
   const scrollRef = useRef(null);
 
   const userInfo =
-    localStorage.getItem("user") !== "undefined"
-      ? JSON.parse(localStorage.getItem("user"))
-      : localStorage.clear();
+    localStorage.getItem("user") !== "undefined" ? JSON.parse(localStorage.getItem("user")) : localStorage.clear();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -59,7 +57,7 @@ const Home = () => {
           <div className="fixed w-4/5 bg-white dark:bg-d-moon bg-gradient-to-b from-d-moon-from to-d-moon-to dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
             <div className="absolute w-full flex justify-end items-center p-2">
               <AiFillCloseCircle
-                fontSize={30}
+                fontSize={28}
                 className="cursor-pointer"
                 onClick={() => setToggleSidebar(false)}
               />
