@@ -16,7 +16,7 @@ const Home = () => {
   const scrollRef = useRef(null);
 
   const userInfo =
-    localStorage.getItem("user") !== "undefined" ? JSON.parse(localStorage.getItem("user")) : localStorage.clear();
+    sessionStorage.getItem("user") !== "undefined" ? JSON.parse(sessionStorage.getItem("user")) : sessionStorage.clear();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -60,17 +60,15 @@ const Home = () => {
         </div>
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
-          <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
-            {/* pantalla full filtro semitransparente */}
-          {/* <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in   backdrop-blur backdrop-blur-sm"> */}
-            <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto ">
+            //blur filter
+          <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in w-screen backdrop-blur backdrop-blur-sm">
+            <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto max-w-xs ">
               <AiFillCloseCircle
                 fontSize={28}
                 className="cursor-pointer text-sky-600 dark:text-sky-400"
                 onClick={() => setToggleSidebar(false)}
               />
-            </div>
-            
+            </div> 
             {/* Desktop Sidebar */}
             <Sidebar closeToggle={setToggleSidebar} user={user && user} />
           </div>

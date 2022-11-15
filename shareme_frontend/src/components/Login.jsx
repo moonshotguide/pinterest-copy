@@ -19,7 +19,7 @@ const Login = () => {
       userName: name,
       image: picture
     }
-    localStorage.setItem('user', JSON.stringify(decoded));
+    sessionStorage.setItem('user', JSON.stringify(decoded));
     console.log(decoded);
     client.createIfNotExists(doc)
       .then(() => {

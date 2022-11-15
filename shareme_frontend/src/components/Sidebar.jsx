@@ -6,7 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import logoWhite from "../assets/logowhite.png";
 import logo from "../assets/logo.png";
 
-const isNotActiveStyle = 'flex items-center px-5 gap-3 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white border-slate-400 transition-all duration-200 ease-in-out capitalize';
+const isNotActiveStyle = 'flex items-center px-5 gap-3 text-slate-600 dark:text-slate-400 hover:text-black hover:font-semibold dark:hover:text-white border-slate-400 transition-all duration-200 ease-in-out capitalize';
 const isActiveStyle = 'flex items-center px-5 gap-3 text-sky-600 dark:text-sky-400 font-extrabold border-r-2 border-black dark:border-slate-400 transition-all duration-200 ease-in-out capitalize';
 
 //Indeed it's came from sanity json backend, this list is just for testing
@@ -26,7 +26,7 @@ const Sidebar = ({ user, closeToggle }) => {
   }
 
   return (
-    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 hide-scrollbar bg-white dark:bg-gray-900">
+    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 max-w-xs hide-scrollbar bg-white dark:bg-gray-900">
       <div className="flex flex-col">
         {/* Logo Link */}
         <Link
