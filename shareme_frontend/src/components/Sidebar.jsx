@@ -26,7 +26,7 @@ const Sidebar = ({ user, closeToggle }) => {
   }
 
   return (
-    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 max-w-xs hide-scrollbar bg-white dark:bg-gray-900">
+    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 max-w-3 hide-scrollbar bg-white dark:bg-gray-900">
       <div className="flex flex-col">
         {/* Logo Link */}
         <Link
@@ -65,15 +65,18 @@ const Sidebar = ({ user, closeToggle }) => {
         // If the user not exists, it render next Link
         <Link
         to={`user-profile/${user._id}`}
-        className='flex my-5 mb-3 gap-2'
+        className='flex my-5 mb-3 gap-2 p-1 ml-1 items-center rounded-xl shadow-lg text-white  bg-slate-900 hover:bg-slate-700 dark:bg-gray-900 dark:hover:bg-sky-700 dark:bg-sky-500 '
         >
-          <img src={user.image} alt="user" className="w-10 h-10 rounded-full rounded-full border-solid border-2 border-cyan-400"/>
-        
+          <img src={user.image} alt="user-profile" className="w-10 h-10 rounded-full rounded-full border-solid border-2 border-cyan-400"/>
+          <p>{user.userName}</p>
         </Link>
       )}
     </div>
   );
 };
+
+
+
 // Modern React Web Development Full Course - 12 Hours | 4 Real Industry Web Applications
 // 1:40:32
 // https://www.bing.com/videos/search?q=react+modern+12+hours&docid=607997018356260593&mid=051F33899DC6862EFB52051F33899DC6862EFB52&view=detail&FORM=VIRE

@@ -60,7 +60,7 @@ const Home = () => {
         </div>
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
-            //blur filter
+            //blur filter and width full screen (Optional)
           <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in w-screen backdrop-blur backdrop-blur-sm">
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto max-w-xs ">
               <AiFillCloseCircle
@@ -86,4 +86,4 @@ const Home = () => {
 };
 
 export default Home;
-// 1:28:22
+// 1:40:32
