@@ -30,13 +30,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex bg-gray-50 dark:bg-d-moon bg-gradient-to-b from-d-moon-from to-d-moon-to dark:text-white md:flex-row flex-col h-screen transition-height duration-75 ease-out">
+    <div className="flex text-slate-900 dark:text-white md:flex-row flex-col h-screen transition-height duration-75 ease-out">
       <div className="hidden md:flex h-screen flex-initial">
         {/* Mobile Sidebar */}
         <Sidebar user={user && user} />
       </div>
+      {/* Head in small devices */}
       <div className="flex md:hidden flex-row">
-        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
+        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-white dark:bg-slate-900 border-b dark:border-slate-400/10 border-slate-900/10">
           <HiMenu
             fontSize={40}
             className="cursor-pointer"
@@ -44,7 +45,7 @@ const Home = () => {
           />
           {/* Logo Shareme */}
           <Link to="/">
-            <img src={  document.documentElement.classList == "dark" ? logoWhite : logo } alt="logo" className="w-1/2" />
+            <img src={ document.documentElement.classList == "dark" ? logoWhite : logo } alt="logo" className="w-1/2" />
           </Link>
 
           {/* Image Profile */}
@@ -57,21 +58,26 @@ const Home = () => {
               <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400">{user?.userName}</h1>
             </Link>
         </div>
+        {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
-          <div className="fixed w-4/5 bg-white dark:bg-d-moon bg-gradient-to-b from-d-moon-from to-d-moon-to dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
-            <div className="absolute w-full flex justify-end items-center p-2">
+          <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+            {/* pantalla full filtro semitransparente */}
+          {/* <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in   backdrop-blur backdrop-blur-sm"> */}
+            <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto ">
               <AiFillCloseCircle
                 fontSize={28}
-                className="cursor-pointer"
+                className="cursor-pointer text-sky-600 dark:text-sky-400"
                 onClick={() => setToggleSidebar(false)}
               />
             </div>
+            
             {/* Desktop Sidebar */}
             <Sidebar closeToggle={setToggleSidebar} user={user && user} />
           </div>
         )}
       </div>
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      {/* Body */}
+      <div className="pb-2 flex-1 h-screen overflow-y-scroll bg-white dark:bg-slate-900" ref={scrollRef}>
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />
