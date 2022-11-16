@@ -3,6 +3,58 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
+    screens: {
+
+      //Min Width
+
+      'android': '320px',
+      // => @media (min-width: 320px) { ... }
+
+      
+      'tablet': '640px',
+      // => @media (min-width: 640px) { ... }
+      
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+      
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'laptop': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+      
+      'desktop': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+
+      //Max Width
+
+      'maxandroid': {'max': '360px'},
+      // => @media (max-width: 639px) { ... }
+
+      'maxsm': {'max': '639px'},
+      // => @media (max-width: 639px) { ... }
+
+      'maxmd': {'max': '767px'},
+      // => @media (max-width: 767px) { ... }
+
+      'maxlg': {'max': '1023px'},
+      // => @media (max-width: 1023px) { ... }
+
+      'maxxl': {'max': '1279px'},
+      // => @media (max-width: 1279px) { ... }
+
+      'max2xl': {'max': '1535px'},
+      // => @media (max-width: 1535px) { ... }
+    },
     extend: {
       margin: {
         320: "320px",

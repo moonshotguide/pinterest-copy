@@ -30,13 +30,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex text-slate-900 dark:text-white md:flex-row flex-col h-screen transition-height duration-75 ease-out">
-      <div className="hidden md:flex h-screen flex-initial">
+    <div className="flex text-slate-900 dark:text-white sm:flex-row flex-col h-screen transition-height duration-75 ease-out">
+      <div className="hidden sm:flex h-screen flex-initial">
         {/* Mobile Sidebar */}
         <Sidebar user={user && user} />
       </div>
       {/* Head in small devices */}
-      <div className="flex md:hidden flex-row">
+      <div className="flex sm:hidden flex-row">
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-white dark:bg-slate-900 border-b dark:border-slate-400/10 border-slate-900/10">
           <HiMenu
             fontSize={40}
@@ -55,14 +55,14 @@ const Home = () => {
                 alt="logo"
                 className="w-14 rounded-full border-solid border-2 border-cyan-400"
               />
-              <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400">{user?.userName}</h1>
+              <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden">{user?.userName}</h1>
             </Link>
         </div>
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
             //blur filter and width full screen (Optional)
           <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in w-screen backdrop-blur backdrop-blur-sm">
-            <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto max-w-xs ">
+            <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
                 fontSize={28}
                 className="cursor-pointer text-sky-600 dark:text-sky-400"
