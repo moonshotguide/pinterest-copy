@@ -4,12 +4,9 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     screens: {
-
       //Min Width
-
       'android': '320px',
       // => @media (min-width: 320px) { ... }
-
       
       'tablet': '640px',
       // => @media (min-width: 640px) { ... }
@@ -99,6 +96,10 @@ module.exports = {
         'd-button-from': '#ae3f3780',
         'd-button-to': '#16568780',
         'd-button-text': '#E8CDF5',
+      },
+      backgroundImage: {
+        'hero-pattern': "url('/img/hero-pattern.svg')",
+        'footer-texture': "url('/img/footer-texture.png')",
       },
       textColor: {
         lightGray: "#F1EFEE",
