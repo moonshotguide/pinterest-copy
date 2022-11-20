@@ -81,9 +81,25 @@ module.exports = {
         'sd-button-from': '#ae3f3780',
         'sd-button-to': '#16568780',
         'sd-button-text': '#E8CDF5',
+
+        // light mode
+        'gh_l_text_primary':'#000000',
+        'gh_l_button_hover':'#536E88',
+        'gh_l_button_text':'#24292f',
+        // background
+        'gh-l-bg-primary':'#F6F8FA',
+        'gh-l-bg-default':'#fff',
+        'gh-l-bg-secondary':'#C2D1E0',
+        'gh_l_bg_button':'#6588A9',
+        // dark mode
+        'gh_text_primary':'#ffffff',
+        'gh_button_hover':'#0369a1',
+        'gh_button_text':'#ffffff',
+        // background
         'gh-bg-primary': '#161b22',
         'gh-bg-default': '#0d1117',
-        'gh-bg-secondary': '#010409'
+        'gh-bg-secondary': '#010409',
+        'gh_bg_button':'#0ea5e9',
       },
       backgroundImage: {
         'hero-pattern': "url('./assets/box.svg')"

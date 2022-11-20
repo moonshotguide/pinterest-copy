@@ -26,7 +26,7 @@ const Sidebar = ({ user, closeToggle }) => {
   }
 
   return (
-    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm hide-scrollbar bg-white dark:bg-gh-bg-primary">
+    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm hide-scrollbar bg-gh-l-bg-primary dark:bg-gh-bg-primary">
       <div className="flex flex-col">
         {/* Logo Link */}
         <Link
@@ -65,7 +65,7 @@ const Sidebar = ({ user, closeToggle }) => {
         // If the user not exists, it render next Link
         <Link
         to={`user-profile/${user._id}`}
-        className='flex my-5 mb-3 gap-2 p-1 ml-1 items-center rounded-xl shadow-lg text-white bg-slate-900 hover:bg-slate-700 dark:bg-gray-900 dark:hover:bg-sky-700 dark:bg-sky-500 '
+        className='flex my-5 mb-3 gap-2 p-1 mx-1 items-center rounded-xl shadow-lg text-white bg-gh_l_bg_button hover:bg-gh_l_button_hover dark:hover:bg-gh_button_hover dark:bg-gh_bg_button '
         >
           <img src={user.image} alt="user-profile" className="w-10 h-10 rounded-full rounded-full border-solid border-2 border-cyan-400"/>
           <p>{user.userName}</p>

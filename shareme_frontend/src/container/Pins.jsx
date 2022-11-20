@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Navbar, Feed, PinDetail, CreatePin, Search } from '../components';
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Navbar, Feed, PinDetail, CreatePin, Search } from "../components";
 
-const Pins = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+const Pins = ({ user }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="px-2 md:px-5">
-      <div className="bg-slate-100 dark:bg-gh-bg-default dark:bg-grid-slate-100/[0.03] dark:bg-[center_top_-1px] dark:border dark:border-slate-100/5 bg-hero-pattern">
-        Pins
+      <div className="bg-gh-l-bg-default dark:bg-gh-bg-default">
+        <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} user={user}/>
+      </div>
+      <div className="h-full bg-gh-l-bg-secondary dark:bg-gh-bg-secondary">
+        <Routes>
+          <Route path="/" element={<Feed/>}/>
+          <Route path="/category/:categoryId" element={<Feed/>}/>
+          <Route path="/pin-detail/:pinId" element={<PinDetail user={user}/>}/>
+          <Route path="/create-pin" element={<CreatePin user={user}/>}/>
+          <Route path="/search" element={<Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}/>
+        </Routes>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Pins
+export default Pins;
