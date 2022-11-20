@@ -64,8 +64,8 @@ const Home = () => {
           <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in w-screen backdrop-blur backdrop-blur-sm">
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
-                fontSize={28}
-                className="cursor-pointer text-sky-600 dark:text-sky-400"
+                fontSize={30}
+                className="cursor-pointer text-gh_l_bg_button dark:text-gh_bg_button"
                 onClick={() => setToggleSidebar(false)}
               />
             </div> 

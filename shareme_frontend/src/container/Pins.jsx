@@ -10,7 +10,7 @@ const Pins = ({ user }) => {
       <div className="bg-gh-l-bg-default dark:bg-gh-bg-default">
         <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} user={user}/>
       </div>
-      <div className="h-full bg-gh-l-bg-secondary dark:bg-gh-bg-secondary">
+      <div className="h-full bg-gh-l-bg-secondary dark:bg-gh-bg-secondary rounded-lg py-3">
         <Routes>
           <Route path="/" element={<Feed/>}/>
           <Route path="/category/:categoryId" element={<Feed/>}/>
