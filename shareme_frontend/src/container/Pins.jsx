@@ -7,7 +7,7 @@ const Pins = () => {
 
   return (
     <div className="px-2 md:px-5">
-      <div className="bg-slate-100 dark:bg-slate-800 dark:bg-grid-slate-100/[0.03] dark:bg-[center_top_-1px] dark:border dark:border-slate-100/5 bg-hero-pattern">
+      <div className="bg-slate-100 dark:bg-gh-bg-default dark:bg-grid-slate-100/[0.03] dark:bg-[center_top_-1px] dark:border dark:border-slate-100/5 bg-hero-pattern">
         Pins
       </div>
     </div>

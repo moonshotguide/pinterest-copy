@@ -8,3 +8,9 @@ body{
 .hide-scrollbar::-webkit-scrollbar{
     display: none;
 }
+.dark {
+    color-scheme: dark;
+}
+
+
+

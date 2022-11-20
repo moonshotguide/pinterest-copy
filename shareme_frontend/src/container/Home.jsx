@@ -37,7 +37,7 @@ const Home = () => {
       </div>
       {/* Head in small devices */}
       <div className="flex sm:hidden flex-row">
-        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-white dark:bg-slate-900 border-b dark:border-slate-400/10 border-slate-900/10">
+        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-white dark:bg-gh-bg-primary border-b dark:border-slate-400/10 border-slate-900/10">
           <HiMenu
             fontSize={40}
             className="cursor-pointer"
@@ -75,7 +75,7 @@ const Home = () => {
         )}
       </div>
       {/* Body */}
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll bg-white dark:bg-slate-900" ref={scrollRef}>
+      <div className="pb-2 flex-1 h-screen overflow-y-scroll bg-white dark:bg-gh-bg-default" ref={scrollRef}>
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />

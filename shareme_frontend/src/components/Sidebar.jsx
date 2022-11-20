@@ -26,7 +26,7 @@ const Sidebar = ({ user, closeToggle }) => {
   }
 
   return (
-    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm hide-scrollbar bg-white dark:bg-gray-900">
+    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm hide-scrollbar bg-white dark:bg-gh-bg-primary">
       <div className="flex flex-col">
         {/* Logo Link */}
         <Link

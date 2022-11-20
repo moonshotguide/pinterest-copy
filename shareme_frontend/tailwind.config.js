@@ -7,48 +7,33 @@ module.exports = {
       //Min Width
       'android': '320px',
       // => @media (min-width: 320px) { ... }
-      
       'tablet': '640px',
-      // => @media (min-width: 640px) { ... }
-      
+      // => @media (min-width: 640px) { ... } 
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
-      
       'md': '768px',
       // => @media (min-width: 768px) { ... }
-
       'laptop': '1024px',
       // => @media (min-width: 1024px) { ... }
-
       'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
-      
+      // => @media (min-width: 1024px) { ... }      
       'desktop': '1280px',
       // => @media (min-width: 1280px) { ... }
-
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }
-
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
-
       //Max Width
-
       'maxandroid': {'max': '360px'},
       // => @media (max-width: 639px) { ... }
-
       'maxsm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
-
       'maxmd': {'max': '767px'},
       // => @media (max-width: 767px) { ... }
-
       'maxlg': {'max': '1023px'},
       // => @media (max-width: 1023px) { ... }
-
       'maxxl': {'max': '1279px'},
       // => @media (max-width: 1279px) { ... }
-
       'max2xl': {'max': '1535px'},
       // => @media (max-width: 1535px) { ... }
     },
@@ -89,17 +74,19 @@ module.exports = {
         620: "620px",
       },
       colors: {
-        'd-moon': '#05070A',
-        'd-moon-from': '#005c793d',
-        'd-moon-to': '#1a00283d',
-        'd-button': '#19112c',
-        'd-button-from': '#ae3f3780',
-        'd-button-to': '#16568780',
-        'd-button-text': '#E8CDF5',
+        'sd-moon': '#05070A',
+        'sd-moon-from': '#005c793d',
+        'sd-moon-to': '#1a00283d',
+        'sd-button': '#19112c',
+        'sd-button-from': '#ae3f3780',
+        'sd-button-to': '#16568780',
+        'sd-button-text': '#E8CDF5',
+        'gh-bg-primary': '#161b22',
+        'gh-bg-default': '#0d1117',
+        'gh-bg-secondary': '#010409'
       },
       backgroundImage: {
-        'hero-pattern': "url('/img/hero-pattern.svg')",
-        'footer-texture': "url('/img/footer-texture.png')",
+        'hero-pattern': "url('./assets/box.svg')"
       },
       textColor: {
         lightGray: "#F1EFEE",
