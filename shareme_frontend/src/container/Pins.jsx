@@ -6,11 +6,11 @@ const Pins = ({ user }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <div className="px-2 md:px-5">
+    <div className="px-2 md:px-4">
       <div className="bg-gh-l-bg-default dark:bg-gh-bg-default">
         <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} user={user}/>
       </div>
-      <div className="h-full bg-gh-l-bg-secondary dark:bg-gh-bg-secondary rounded-lg p-2">
+      <div className="h-full bg-black dark:bg-gh-bg-primary rounded-lg p-2">
         <Routes>
           <Route path="/" element={<Feed/>}/>
           <Route path="/category/:categoryId" element={<Feed/>}/>

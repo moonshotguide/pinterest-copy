@@ -9,16 +9,14 @@ import { userQuery } from "../utils/data";
 import { client } from "../client";
 import logoWhite from "../assets/logowhite.png";
 import logo from "../assets/logo.png";
+import { fetchUser } from "../utils/fetchUser";
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);
 
-  const userInfo =
-    sessionStorage.getItem("user") !== "undefined"
-      ? JSON.parse(sessionStorage.getItem("user"))
-      : sessionStorage.clear();
+  const userInfo = fetchUser();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -39,7 +37,7 @@ const Home = () => {
       </div>
       {/* Head in small devices */}
       <div className="flex sm:hidden flex-row">
-        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-gh-l-bg-primary dark:bg-gh-bg-primary border-b dark:border-slate-400/10 border-slate-900/10">
+        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-sd_l_bg_primary dark:bg-gh-bg-secondary border-b dark:border-slate-800/70 border-slate-900/10">
           <HiMenu
             fontSize={40}
             className="cursor-pointer"
@@ -78,7 +76,7 @@ const Home = () => {
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
                 fontSize={30}
-                className="cursor-pointer rounded-full bg-white dark:bg-gh_button_text text-gh_l_bg_button dark:text-gh_bg_button hover:text-gh_l_button_hover dark:hover:text-gh_button_hover "
+                className="cursor-pointer rounded-full bg-white dark:bg-gh_button_text text-sd_l_bg_button dark:text-gh_bg_button hover:text-sd_l_button_hover dark:hover:text-gh_button_hover "
                 onClick={() => setToggleSidebar(false)}
               />
             </div>

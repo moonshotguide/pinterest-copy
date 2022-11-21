@@ -24,7 +24,7 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
       //Max Width
-      'maxandroid': {'max': '360px'},
+      'maxandroid': {'max': '412px'},
       // => @media (max-width: 639px) { ... }
       'maxtablet': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
@@ -53,7 +53,7 @@ module.exports = {
         656: "656px",
         880: "880px",
         508: "508px",
-        'fill-available': "-webkit-fill-available",
+        'fill_available': "-webkit-fill-available",
 
       },
       height: {
@@ -111,10 +111,10 @@ module.exports = {
         'sd_l_button_hover':'#a62828',
         'sd_l_button_text':'#fff',
         // background
-        'sd-l-bg-primary':'#e5e5e5',
-        'sd-l-bg-primary_2':'#f7f7f7',
-        'sd-l-bg-default':'#fff',
-        'sd-l-bg-secondary':'#000000',
+        'sd_l_bg_primary':'#e5e5e5',
+        'sd_l_bg_primary_2':'#f7f7f7',
+        'sd_l_bg_default':'#fff',
+        'sd_l_bg_secondary':'#000000',
         'sd_l_bg_button':'#F03200',
 
 
