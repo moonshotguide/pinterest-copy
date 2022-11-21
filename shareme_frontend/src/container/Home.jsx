@@ -16,7 +16,9 @@ const Home = () => {
   const scrollRef = useRef(null);
 
   const userInfo =
-    sessionStorage.getItem("user") !== "undefined" ? JSON.parse(sessionStorage.getItem("user")) : sessionStorage.clear();
+    sessionStorage.getItem("user") !== "undefined"
+      ? JSON.parse(sessionStorage.getItem("user"))
+      : sessionStorage.clear();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -45,37 +47,51 @@ const Home = () => {
           />
           {/* Logo Shareme */}
           <Link to="/">
-            <img src={ document.documentElement.classList == "dark" ? logoWhite : logo } alt="logo" className="w-1/2" />
+            <img
+              src={
+                document.documentElement.classList == "dark" ? logoWhite : logo
+              }
+              alt="logo"
+              className="w-1/2"
+            />
           </Link>
 
           {/* Image Profile */}
-            <Link to={`user-profile/${user?._id}`} className="flex flex-col items-center ">
-              <img
-                src={user?.image}
-                alt="logo"
-                className="w-14 rounded-full border-solid border-2 border-cyan-400"
-              />
-              <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden">{user?.userName}</h1>
-            </Link>
+          <Link
+            to={`user-profile/${user?._id}`}
+            className="flex flex-col items-center "
+          >
+            <img
+              src={user?.image}
+              alt="logo"
+              className="w-14 rounded-full border-solid border-2 border-cyan-400"
+            />
+            <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden">
+              {user?.userName}
+            </h1>
+          </Link>
         </div>
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
-            //blur filter and width full screen (Optional)
+          //blur filter and width full screen (Optional)
           <div className="fixed w-4/5 text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in w-screen backdrop-blur backdrop-blur-sm">
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
                 fontSize={30}
-                className="cursor-pointer text-gh_l_bg_button dark:text-gh_bg_button"
+                className="cursor-pointer rounded-full bg-white dark:bg-gh_button_text text-gh_l_bg_button dark:text-gh_bg_button hover:text-gh_l_button_hover dark:hover:text-gh_button_hover "
                 onClick={() => setToggleSidebar(false)}
               />
-            </div> 
+            </div>
             {/* Desktop Sidebar */}
             <Sidebar closeToggle={setToggleSidebar} user={user && user} />
           </div>
         )}
       </div>
       {/* Body */}
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll bg-gh-l-bg-default dark:bg-gh-bg-default" ref={scrollRef}>
+      <div
+        className="pb-2 flex-1 h-screen overflow-y-scroll bg-gh-l-bg-default dark:bg-gh-bg-default"
+        ref={scrollRef}
+      >
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />

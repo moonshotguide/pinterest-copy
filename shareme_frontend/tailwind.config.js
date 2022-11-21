@@ -26,13 +26,13 @@ module.exports = {
       //Max Width
       'maxandroid': {'max': '360px'},
       // => @media (max-width: 639px) { ... }
-      'maxsm': {'max': '639px'},
+      'maxtablet': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
       'maxmd': {'max': '767px'},
       // => @media (max-width: 767px) { ... }
-      'maxlg': {'max': '1023px'},
+      'maxlaptop': {'max': '1023px'},
       // => @media (max-width: 1023px) { ... }
-      'maxxl': {'max': '1279px'},
+      'maxdesktop': {'max': '1279px'},
       // => @media (max-width: 1279px) { ... }
       'max2xl': {'max': '1535px'},
       // => @media (max-width: 1535px) { ... }
@@ -43,6 +43,9 @@ module.exports = {
       },
       width: {
         190: "190px",
+        200: "200px",
+        236: "236px",
+        240: "240px",
         275: "275px",
         300: "300px",
         340: "340px",
@@ -50,6 +53,8 @@ module.exports = {
         656: "656px",
         880: "880px",
         508: "508px",
+        'fill-available': "-webkit-fill-available",
+
       },
       height: {
         80: "80px",
@@ -82,7 +87,7 @@ module.exports = {
         'sd-button-to': '#16568780',
         'sd-button-text': '#E8CDF5',
 
-        // light mode
+        // GH light mode
         'gh_l_text_primary':'#000000',
         'gh_l_button_hover':'#536E88',
         'gh_l_button_text':'#24292f',
@@ -91,15 +96,28 @@ module.exports = {
         'gh-l-bg-default':'#fff',
         'gh-l-bg-secondary':'#C2D1E0',
         'gh_l_bg_button':'#6588A9',
-        // dark mode
-        'gh_text_primary':'#ffffff',
+        // GH dark mode
+        'gh_text_primary':'#FFFFFF',
         'gh_button_hover':'#0369a1',
-        'gh_button_text':'#ffffff',
+        'gh_button_text':'#FFFFFF',
         // background
         'gh-bg-primary': '#161b22',
         'gh-bg-default': '#0d1117',
         'gh-bg-secondary': '#010409',
         'gh_bg_button':'#0ea5e9',
+
+        // SD light mode
+        'sd_l_text_primary':'#000000',
+        'sd_l_button_hover':'#a62828',
+        'sd_l_button_text':'#fff',
+        // background
+        'sd-l-bg-primary':'#e5e5e5',
+        'sd-l-bg-primary_2':'#f7f7f7',
+        'sd-l-bg-default':'#fff',
+        'sd-l-bg-secondary':'#000000',
+        'sd_l_bg_button':'#F03200',
+
+
       },
       backgroundImage: {
         'hero-pattern': "url('./assets/box.svg')"
