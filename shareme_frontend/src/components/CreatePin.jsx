@@ -82,11 +82,12 @@ const CreatePin = ({ user }) => {
                 />
               </label>
             ) : (
-              <div className="relative h-auto">
-                <img src={imageAsset?.url} alt="uploaded-pic" className="h-auto w-content" />
+              <div className="relative h-full">
+                <img src={imageAsset?.url} alt="uploaded-pic" className="h-auto w-auto" />
                 <button
                   type="button"
-                  className="absolute bottom-3 right-3 p-2 rounded-full bg-sd_l_bg_button"
+                  className="absolute bottom-3 right-3 p-2 rounded-full bg-sd_l_bg_button text-xl courser-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
+                  onClick={() => setImageAsset(null)}
                 >
                   <MdDelete fontSize={25} className='text-white'/>
                 </button>
