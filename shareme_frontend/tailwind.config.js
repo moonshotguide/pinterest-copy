@@ -119,9 +119,9 @@ module.exports = {
 
 
       },
-      backgroundImage: {
-        'hero-pattern': "url('./assets/box.svg')"
-      },
+      // backgroundImage: {
+      //   'hero-pattern': "url('./assets/box.svg')"
+      // },
       textColor: {
         lightGray: "#F1EFEE",
         primary: "#FAFAFA",

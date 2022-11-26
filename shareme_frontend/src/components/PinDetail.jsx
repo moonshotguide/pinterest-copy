@@ -40,20 +40,23 @@ const PinDetail = ({ user }) => {
 
   if (!pinDetail) return <Spinner message="Loading Pin" />;
 
+
   return (
     <>
       <div
-        className="object-none flex xl:flex-row w-full h-full flex-col m-auto bg-sd_l_bg_default dark:bg-gh-bg-default"
+        className="object-none flex xl:flex-row w-full h-full flex-col bg-sd_l_bg_default dark:bg-gh-bg-default"
         style={{
           backgroundSize: "contain",
           borderRadius: "32px",
+          maxWidth: "1500px",
           backgroundImage: `url(${pinDetail.image?.asset?.url})`,
         }}
       >
-        <div className="backdrop-blur-sm bg-white/3 p-5 w-full h-full">
+        <div className="backdrop-blur-sm bg-white/3 p-6 w-full h-full maxandroid:p-2" style={{borderRadius: "32px"}}>
           <div
-            className="flex xl:flex-row flex-col bg-sd_l_bg_default p-2 m-6 dark:bg-gh-bg-default"
+            className="flex xl:flex-row flex-col bg-sd_l_bg_default p-1 dark:bg-gh-bg-default"
             style={{
+              // maxWidth: `(${document.querySelector("#pinImage").width})`,
               maxWidth: "1500px",
               borderRadius: "32px",
               backgroundSize: "cover",
@@ -62,8 +65,9 @@ const PinDetail = ({ user }) => {
             <div className="flex justify-center items-center md:items-start flex-initial">
               <img
                 src={pinDetail?.image && urlFor(pinDetail.image)}
-                className="rounded-t-3xl rounded-b-lg"
+                className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px]"
                 alt="user-post"
+                id="pinImage"
               />
             </div>
             <div className="w-full p-5 flex-1 xl:min-w-620">
