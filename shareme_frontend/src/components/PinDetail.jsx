@@ -65,7 +65,8 @@ const PinDetail = ({ user }) => {
             <div className="flex justify-center items-center md:items-start flex-initial">
               <img
                 src={pinDetail?.image && urlFor(pinDetail.image)}
-                className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px]"
+                className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] max-h-heightImg"
+                // style={ {maxHeight: "calc(100vh - (32px + 32px + 8px + 48px + 12px + 20px))"} }
                 alt="user-post"
                 id="pinImage"
               />

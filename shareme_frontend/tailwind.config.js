@@ -54,7 +54,6 @@ module.exports = {
         880: "880px",
         508: "508px",
         'fill_available': "-webkit-fill-available",
-
       },
       height: {
         80: "80px",
@@ -72,6 +71,7 @@ module.exports = {
       },
       maxHeight: {
         370: "370px",
+        "heightImg": "calc(100vh - (24px + 24px + 4px + 4px + 8px + (48px + 20px + 12px)))",
       },
       minWidth: {
         210: "210px",
