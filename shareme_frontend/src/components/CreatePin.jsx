@@ -84,13 +84,13 @@ const CreatePin = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
+    <div className="flex flex-col justify-center items-center mt-5 lg:h-6/7">
       {fields && (
         <p className="text-red-500 dark:text-gh_bg_button mb-5 text-xl transition-all duration-150 ease-in">
           Please fill all the fields.
         </p>
       )}
-      <div className="flex lg:flex-row flex-col justify-center items-center bg-sd_l_bg_default dark:bg-gh-bg-default lg:p-5 p-3 lg:w-4/5 w-full">
+      <div className="flex lg:flex-row flex-col justify-center items-center bg-sd_l_bg_default dark:bg-gh-bg-default lg:p-5 p-3 lg:w-6/7 w-full">
         {/* Upload Banner */}
         <div className="bg-sd_l_bg_secondary dark:bg-gh-bg-secondary p-3 flex flex-1 w-full rounded-lg">
           {/* Border dotted Rectangle */}

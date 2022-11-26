@@ -72,7 +72,7 @@ const Home = () => {
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
           // blur filter and width full screen (w-screen) (Optional)
-          <div  onClick={() => setToggleSidebar(false)} className="fixed w-screen text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in w-screen backdrop-blur backdrop-blur-sm">
+          <div  onClick={() => setToggleSidebar(false)} className="fixed w-screen text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in backdrop-blur-sm">
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
                 fontSize={30}
