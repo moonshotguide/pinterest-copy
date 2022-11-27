@@ -92,7 +92,7 @@ const CreatePin = ({ user }) => {
       )}
       <div className="flex lg:flex-row flex-col justify-center items-center bg-sd_l_bg_default dark:bg-gh-bg-default lg:p-5 p-3 lg:w-6/7 w-full">
         {/* Upload Banner */}
-        <div className="bg-sd_l_bg_secondary dark:bg-gh-bg-secondary p-3 flex flex-1 w-full rounded-lg">
+        <div className="bg-sd_l_bg_primary_2 dark:bg-gh-bg-secondary p-3 flex flex-1 w-full rounded-lg">
           {/* Border dotted Rectangle */}
           <div className="flex justify-center items-center flex-col border-2 rounded-lg border-dotted border-gray-300 dark:border-slate-800/70 p-3 w-full h-420">
             {loading && <Spinner />}
@@ -106,7 +106,7 @@ const CreatePin = ({ user }) => {
                     </p>
                     <p className="text-lg">Click to Upload</p>
                   </div>
-                  <p className="mt-28 px-8 text-gray-400 text-center">
+                  <p className="mt-28 px-8 text-black dark:text-gray-400 text-center">
                     Use hight-quality .JPG, .SVG, .PNG, .GIF, or .TIFF less than
                     20 MB
                   </p>
@@ -143,7 +143,7 @@ const CreatePin = ({ user }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Add your title here"
-            className="outline-none rounded-lg text-base sm:text-md p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary"
+            className="outline-none rounded-lg text-base sm:text-md p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary placeholder:italic placeholder:text-slate-600 dark:placeholder:text-gray-500"
           />
           {user && (
             <div className="flex gap-2 items-center dark:bg-gh-bg-default bg-sd_l_bg_default rounded-lg">
@@ -160,14 +160,14 @@ const CreatePin = ({ user }) => {
             value={about}
             onChange={(e) => setAbout(e.target.value)}
             placeholder="What is your pin about"
-            className="outline-none rounded-lg text-base sm:text-sm p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary"
+            className="outline-none rounded-lg text-base sm:text-sm p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary placeholder:italic placeholder:text-slate-600 dark:placeholder:text-gray-500"
           />
           <input
             type="text"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add a destination link"
-            className="outline-none rounded-lg text-base sm:text-sm p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary"
+            className="outline-none rounded-lg text-base sm:text-sm p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary placeholder:italic placeholder:text-slate-600 dark:placeholder:text-gray-500"
           />
           <div className="flex flex-col">
             <div>

@@ -29,7 +29,7 @@ const Sidebar = ({ user, closeToggle }) => {
   }
 
   return (
-    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm hide-scrollbar bg-sd_l_bg_primary dark:bg-gh-bg-secondary border-r dark:border-slate-800/70">
+    <div className="flex flex-col justify-between h-full overflow-y-scroll min-w-210 android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm hide-scrollbar bg-sd_l_bg_primary_2 dark:bg-gh-bg-secondary border-r dark:border-slate-800/90">
       <div className="flex flex-col">
         {/* Logo Link */}
         <Link
@@ -40,7 +40,7 @@ const Sidebar = ({ user, closeToggle }) => {
           <img src={ document.documentElement.classList == "dark" ? logoWhite : logo } alt="logo" className="w-full" />
         </Link>
         {/* Sidebar Column */}
-        <div className="flex flex-col gap-5 text-base xl:text-lg 2xl:text-xl">
+        <div className="flex flex-col gap-5 text-base xl:text-lg">
           {/* Home Link */}
           <NavLink
           to="/"

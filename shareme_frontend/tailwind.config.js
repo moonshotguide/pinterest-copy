@@ -7,6 +7,8 @@ module.exports = {
       //Min Width
       'android': '320px',
       // => @media (min-width: 320px) { ... }
+      'androidWeb': '419px',
+      // => @media (min-width: 320px) { ... }
       'tablet': '640px',
       // => @media (min-width: 640px) { ... } 
       'sm': '640px',
@@ -24,7 +26,7 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
       //Max Width
-      'maxandroid': {'max': '412px'},
+      'maxandroid': {'max': '418px'},
       // => @media (max-width: 639px) { ... }
       'maxtablet': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
@@ -116,7 +118,7 @@ module.exports = {
         'sd_l_button_text':'#fff',
         // background
         'sd_l_bg_primary':'#e5e5e5',
-        'sd_l_bg_primary_2':'#f7f7f7',
+        'sd_l_bg_primary_2':'#c7c7c7',
         'sd_l_bg_default':'#fff',
         'sd_l_bg_secondary':'#000000',
         'sd_l_bg_button':'#F03200',

@@ -37,7 +37,7 @@ const Home = () => {
       </div>
       {/* Head in small devices */}
       <div className="flex sm:hidden flex-row">
-        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-sd_l_bg_primary dark:bg-gh-bg-secondary border-b dark:border-slate-800/70 border-slate-900/10">
+        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-sd_l_bg_primary dark:bg-gh-bg-secondary border-b dark:border-slate-800/90 border-slate-900/10">
           <HiMenu
             fontSize={40}
             className="cursor-pointer"
@@ -57,14 +57,14 @@ const Home = () => {
           {/* Image Profile */}
           <Link
             to={`user-profile/${user?._id}`}
-            className="flex flex-col items-center "
+            className="flex flex-col items-center androidWeb:flex-row-reverse"
           >
             <img
               src={user?.image}
               alt="logo"
               className="w-14 rounded-full border-solid border-2 border-cyan-400"
             />
-            <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden">
+            <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden androidWeb:pr-2 pt-0">
               {user?.userName}
             </h1>
           </Link>
