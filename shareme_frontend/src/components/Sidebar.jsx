@@ -75,13 +75,4 @@ const Sidebar = ({ user, closeToggle }) => {
   );
 };
 
-
-
-// Modern React Web Development Full Course - 12 Hours | 4 Real Industry Web Applications
-// 1:40:32
-// https://www.bing.com/videos/search?q=react+modern+12+hours&docid=607997018356260593&mid=051F33899DC6862EFB52051F33899DC6862EFB52&view=detail&FORM=VIRE
-// Texte Gradient
-// https://redpixelthemes.com/blog/tailwindcss-gradient-text/
-// https://tailwindcolor.com/
-
 export default Sidebar;

@@ -73,6 +73,10 @@ module.exports = {
         370: "370px",
         "heightImg": "calc(100vh - (24px + 24px + 4px + 4px + 8px + (48px + 20px + 12px)))",
       },
+      maxWidth: {
+        370: "370px",
+        "widthImg": "calc(100vw)",
+      },
       minWidth: {
         210: "210px",
         350: "350px",
