@@ -44,11 +44,11 @@ const PinDetail = ({ user }) => {
   return (
     <>
       <div
-        className="object-none flex xl:flex-row w-full h-full flex-col bg-sd_l_bg_default dark:bg-gh-bg-default"
+        className="object-none flex xl:flex-row w-full h-full flex-col bg-sd_l_bg_default dark:bg-gh-bg-default max-w-widthImg"
         style={{
           backgroundSize: "contain",
           borderRadius: "32px",
-          maxWidth: "1500px",
+          // maxWidth: "1500px",
           backgroundImage: `url(${pinDetail.image?.asset?.url})`,
         }}
       >
@@ -56,7 +56,6 @@ const PinDetail = ({ user }) => {
           <div
             className="flex xl:flex-row flex-col bg-sd_l_bg_default p-1 dark:bg-gh-bg-default"
             style={{
-              // maxWidth: `(${document.querySelector("#pinImage").width})`,
               maxWidth: "1500px",
               borderRadius: "32px",
               backgroundSize: "cover",
@@ -65,13 +64,13 @@ const PinDetail = ({ user }) => {
             <div className="flex justify-center items-center md:items-start flex-initial">
               <img
                 src={pinDetail?.image && urlFor(pinDetail.image)}
-                className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px]"
+                className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] max-h-heightImg"
                 alt="user-post"
                 id="pinImage"
               />
             </div>
             <div className="w-full p-5 flex-1 xl:min-w-620">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between flex-col lg:flex-row">
                 <div className="flex gap-2 items-center">
                   <a
                     href={`${pinDetail.image?.asset?.url}?dl=`}
@@ -83,6 +82,15 @@ const PinDetail = ({ user }) => {
                     Download
                   </a>
                 </div>
+                <a href={pinDetail.destination} target="_blank" rel="noreferrer" className="maxandroid:text-xs tablet:text-sm font-thin">
+                  {pinDetail.destination}
+                </a>
+              </div>
+              <div>
+                <h1 className="text-4xl font-bold break-words mt-3">
+                  {pinDetail.title}
+                </h1>
+                <p className="mt-3">{pinDetail.about}</p>
               </div>
             </div>
           </div>
