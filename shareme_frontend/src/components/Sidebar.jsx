@@ -6,18 +6,21 @@ import { IoIosArrowForward } from "react-icons/io";
 import logoWhite from "../assets/logowhite.png";
 import logo from "../assets/logo.png";
 
+import { categories } from "../utils/data";
+
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-slate-600 dark:text-slate-400 hover:text-black hover:font-semibold dark:hover:text-white border-slate-400 transition-all duration-200 ease-in-out capitalize';
 const isActiveStyle = 'flex items-center px-5 gap-3 text-red-600 dark:text-sky-400 font-extrabold border-r-2 border-black dark:border-slate-400 transition-all duration-200 ease-in-out capitalize';
 
 //Indeed it's came from sanity json backend, this list is just for testing
-const categories = [
-  { name: 'Animals' },
-  { name: 'Wallpapers' },
-  { name: 'Photography' },
-  { name: 'Gaming' },
-  { name: 'Coding' },
-  { name: 'Other' }
-]
+// const categories = [
+//   { name: 'Animals' },
+//   { name: 'Wallpaper' },
+//   { name: 'Photography' },
+//   { name: 'Gaming' },
+//   { name: 'Coding' },
+//   { name: 'Other' },
+//   { name: 'Cars' }
+// ]
 
 const Sidebar = ({ user, closeToggle }) => {
   //close sidebar when something

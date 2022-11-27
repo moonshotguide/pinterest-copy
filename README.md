@@ -12,4 +12,4 @@ https://demo.themesberg.com/windster-pro/
 New Style Dashboard
 https://coderthemes.com/hyper_2/saas/index.html
 
-Tutorial 3:17
+Tutorial 3:53:26

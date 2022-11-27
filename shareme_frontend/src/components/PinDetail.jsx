@@ -40,7 +40,6 @@ const PinDetail = ({ user }) => {
 
   if (!pinDetail) return <Spinner message="Loading Pin" />;
 
-
   return (
     <>
       <div
@@ -52,11 +51,14 @@ const PinDetail = ({ user }) => {
           backgroundImage: `url(${pinDetail.image?.asset?.url})`,
         }}
       >
-        <div className="backdrop-blur-sm bg-white/3 p-6 w-full h-full maxandroid:p-2" style={{borderRadius: "32px"}}>
+        <div
+          className="backdrop-blur-sm bg-white/3 p-6 w-full h-full maxandroid:p-2"
+          style={{ borderRadius: "32px" }}
+        >
           <div
             className="flex xl:flex-row flex-col bg-sd_l_bg_default p-1 dark:bg-gh-bg-default"
             style={{
-              maxWidth: "1500px",
+              // maxWidth: "1500px",
               borderRadius: "32px",
               backgroundSize: "cover",
             }}
@@ -69,7 +71,8 @@ const PinDetail = ({ user }) => {
                 id="pinImage"
               />
             </div>
-            <div className="w-full p-5 flex-1 xl:min-w-620">
+            {/* Right Side Box of Pin */}
+            <div className="w-full p-5 flex-1 min-w-[400px]">
               <div className="flex items-center justify-between flex-col lg:flex-row">
                 <div className="flex gap-2 items-center">
                   <a
@@ -82,7 +85,12 @@ const PinDetail = ({ user }) => {
                     Download
                   </a>
                 </div>
-                <a href={pinDetail.destination} target="_blank" rel="noreferrer" className="maxandroid:text-xs tablet:text-sm font-thin">
+                <a
+                  href={pinDetail.destination}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="maxandroid:text-xs tablet:text-sm font-thin maxlaptop:mt-2"
+                >
                   {pinDetail.destination}
                 </a>
               </div>
@@ -91,6 +99,64 @@ const PinDetail = ({ user }) => {
                   {pinDetail.title}
                 </h1>
                 <p className="mt-3">{pinDetail.about}</p>
+              </div>
+              {/* Link to user profile */}
+              <Link
+                to={`user-profile/${pinDetail.postedBy?._id}`}
+                className="flex gap-2 mt-5 items-center bg-sd_l_bg_default dark:bg-gh-bg-default rounded-lg p-1"
+              >
+                <img
+                  className="w-8 h-8 rounded-full object-cover border border-solid border-cyan-400"
+                  src={pinDetail.postedBy?.image}
+                  alt="user-profile"
+                />
+                <p className="text-sm font-semibold capitalize text-white">
+                  {pinDetail.postedBy?.userName}
+                </p>
+              </Link>
+              <h2 className="mt-5 text-xl">Comments</h2>
+              <div className="max-h-370 overflow-y-auto">
+                {/* Is there comments? */}
+                {pinDetail?.comment?.map((comment, i) => (
+                  <div
+                    className="flex gap-2 mt-2 items-center bg-sd_l_bg_default dark:bg-gh-bg-default rounded-lg"
+                    key={i}
+                  >
+                    <img
+                      src={comment.postedBy.image}
+                      alt="user-profile"
+                      className="w-10 h-10 rounded-full cursor-pointer"
+                    />
+                    <div className="flex flex-col">
+                      <p className="font-bold">{comment.postedBy.userName}</p>
+                      <p className="font-thin">{comment.comment}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Where user add the comment */}
+              <div className="flex flex-wrap mt-6 gap-3">
+                {/* Link to user profile */}
+                <Link to={`user-profile/${pinDetail.postedBy?._id}`}>
+                  <img
+                    className="w-7 h-7 rounded-full cursor-pointer border border-solid border-cyan-400"
+                    src={pinDetail.postedBy?.image}
+                    alt="user-profile"
+                  />
+                </Link>
+                <input
+                  type="text"
+                  className="flex-1 border-gray-100 outline-none border-2 p-2 rounded-2xl focus:border-gray-300"
+                  placeholder="Add a comment"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="bg-red-500 text-white rounded-full px-6 py-2 font-semibold text-base outline-none"
+                >
+                  {addingComment ? 'Posting the comment' : "!Posted"}
+                </button>
               </div>
             </div>
           </div>
