@@ -16,16 +16,16 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search"
           value={searchTerm}
-          onFocus={()=> navigate('/search')}
+          onFocus={() => navigate('/search')}
           className='p-2 w-full bg-sd_l_bg_primary dark:bg-gh-bg-primary outline-none'
         />
       </div>
       <div className="flex gap-3">
         <Link to={`user-profile/${user?._id}`} className='hidden md:block'>
-          <img src={user.image} alt="user" className="w-14 h-12 rounded-lg"/>
+          <img src={user.image} alt="user" className="w-14 h-12 rounded-lg" />
         </Link>
         <Link to='create-pin' className='rounded-lg w-12 h-12 md:w-14 md:h-12 flex justify-center items-center bg-sd_l_bg_button dark:bg-gh_bg_button text-white dark:text-gh_text_primary hover:bg-sd_l_button_hover dark:hover:bg-gh_button_hover'>
-          <IoMdAdd fontSize={23}/>
+          <IoMdAdd fontSize={23} />
         </Link>
       </div>
     </div>

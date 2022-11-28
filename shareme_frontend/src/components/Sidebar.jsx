@@ -44,7 +44,7 @@ const Sidebar = ({ user, closeToggle }) => {
           {/* Home Link */}
           <NavLink
           to="/"
-          className={({ isActive }) => ( isActive ? isActiveStyle : isNotActiveStyle ) }
+          className={({ isActive }) => ( isActive ? isActiveStyle : isNotActiveStyle)}
           onClick={handleCloseSidebar}
           >
             <RiHomeFill/>
