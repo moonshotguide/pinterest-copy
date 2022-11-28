@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { HiMenu } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 import { Sidebar, UserProfile } from "../components";
 import Pins from "./Pins";
@@ -11,7 +11,8 @@ import logoWhite from "../assets/logowhite.png";
 import logo from "../assets/logo.png";
 import { fetchUser } from "../utils/fetchUser";
 
-const Home = () => {
+const Home = ( { }) => {
+  // const navigate = useNavigate();
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);
@@ -37,7 +38,7 @@ const Home = () => {
       </div>
       {/* Head in small devices */}
       <div className="flex sm:hidden flex-row">
-        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-sd_l_bg_primary dark:bg-gh-bg-secondary border-b dark:border-slate-800/70 border-slate-900/10">
+        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md bg-sd_l_bg_primary dark:bg-gh-bg-secondary border-b dark:border-slate-800/90 border-slate-900/10">
           <HiMenu
             fontSize={40}
             className="cursor-pointer"
@@ -55,24 +56,28 @@ const Home = () => {
           </Link>
 
           {/* Image Profile */}
-          <Link
-            to={`user-profile/${user?._id}`}
-            className="flex flex-col items-center "
-          >
-            <img
-              src={user?.image}
-              alt="logo"
-              className="w-14 rounded-full border-solid border-2 border-cyan-400"
-            />
-            <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden">
-              {user?.userName}
-            </h1>
-          </Link>
+          {/* If the user is login return user profile link */}
+          {(user) && (
+            <Link
+              to={`user-profile/${user?._id}`}
+              className="flex flex-col items-center androidWeb:flex-row-reverse"
+            >
+              <img
+                src={user?.image}
+                alt="logo"
+                className="w-14 rounded-full border-solid border-2 border-cyan-400"
+              />
+              <h1 className="pt-2 text-sm font-light text-slate-800 dark:text-slate-400 maxandroid:hidden androidWeb:pr-2 pt-0">
+                {user?.userName}
+              </h1>
+            </Link>
+          )}
+
         </div>
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
           // blur filter and width full screen (w-screen) (Optional)
-          <div  onClick={() => setToggleSidebar(false)} className="fixed w-screen text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in backdrop-blur-sm">
+          <div onClick={() => setToggleSidebar(false)} className="fixed w-screen text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in backdrop-blur-sm">
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
                 fontSize={30}
