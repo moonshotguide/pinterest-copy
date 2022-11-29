@@ -73,6 +73,7 @@ module.exports = {
       },
       maxHeight: {
         370: "370px",
+        450: "450px",
         "heightImg": "calc(100vh - (24px + 24px + 4px + 4px + 8px + (48px + 20px + 12px)))",
       },
       maxWidth: {
