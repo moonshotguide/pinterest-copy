@@ -163,7 +163,7 @@ const PinDetail = ({ user }) => {
                         </div>
                       </div>
                       {/* Like and share icon */}
-                      <div className="flex flex-row gap-10 mt-1 ml-1">
+                      <div className="flex flex-row gap-10 mt-1 ml-1 justify-around">
                         <button className="flex flex-row items-center">
                           <AiOutlineHeart fontSize={20} className="mr-1" />
                           Like
