@@ -20,8 +20,10 @@ import Spinner from "./Spinner";
 
 const randomImage = "https://dummyimage.com/1600x900/000/fff";
 
-const activeBtnStyles = 'bg-red-500 text-white font-semibold p-2 rounded-full w-20 outline-none';
-const notActiveBtnStyles = 'bg-primary mr-4 text-black text-white font-semibold p-2 rounded-full w-20 outline-none';
+const activeBtnStyles =
+  "bg-red-500 text-white font-semibold p-2 rounded-full w-20 outline-none";
+const notActiveBtnStyles =
+  "bg-primary mr-4 text-black text-white font-semibold p-2 rounded-full w-20 outline-none";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -72,11 +74,12 @@ const UserProfile = () => {
                   render={(renderProps) => (
                     <button
                       type="button"
-                      className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
+                      className="bg-red-500 p-2 rounded-full cursor-pointer outline-none shadow-md flex text-white gap-[0.5rem] px-[0.5rem] py-[0.25rem] text-xl items-center"
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
                     >
-                      <AiOutlineLogout color="red" fontSize={21} />
+                      <AiOutlineLogout color="white" fontSize={25} />
+                      Logout
                     </button>
                   )}
                   onLogoutSuccess={logout}
@@ -93,9 +96,26 @@ const UserProfile = () => {
             type="button"
             onClick={(e) => {
               setText(e.target.textContent);
+              setActiveBtn('created');
             }}
-            className={`${activeBtn === 'created' ? activeBtnStyles : notActiveBtnStyles}`}
-          >Created</button>
+            className={`${
+              activeBtn === "created" ? activeBtnStyles : notActiveBtnStyles
+            }`}
+          >
+            Created
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              setText(e.target.textContent);
+              setActiveBtn('saved');
+            }}
+            className={`${
+              activeBtn === "saved" ? activeBtnStyles : notActiveBtnStyles
+            }`}
+          >
+            Saved
+          </button>
         </div>
       </div>
       UserProfile
