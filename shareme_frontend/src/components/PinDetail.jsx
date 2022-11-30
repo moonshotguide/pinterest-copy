@@ -17,6 +17,19 @@ const PinDetail = ({ user }) => {
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
 
+  // Aplica una condicion de estilos para tamaños de pantalla Android
+  // const [matches, setMatches] = useState(
+  //   window.matchMedia("(min-width: 419px)").matches
+  // );
+
+  // useEffect(() => {
+  //   window
+  //   .matchMedia("(min-width: 419px)")
+  //   .addEventListener('change', e => setMatches( e.matches ));
+  // }, []);
+
+
+
   const fetchPinDetails = () => {
     const query = pinDetailQuery(pinId);
 
@@ -63,6 +76,7 @@ const PinDetail = ({ user }) => {
 
   if (!pinDetail) return <Spinner message="Loading Pin" />;
 
+  
   return (
     <>
       {pinDetail && (
@@ -76,25 +90,47 @@ const PinDetail = ({ user }) => {
           }}
         >
           <div
-            className="backdrop-blur-sm bg-white/3 p-6 w-full h-full android:p-2"
-            style={{ borderRadius: "32px" }}
+            className="backdrop-blur-sm bg-white/3 p-6 w-full h-full android:p-2 rounded-[32px]"
           >
             <div
-              className="flex xl:flex-row flex-col bg-sd_l_bg_default p-1 dark:bg-gh-bg-default"
+              className="flex xl:flex-row flex-col bg-sd_l_bg_default p-1 dark:bg-gh-bg-default rounded-[32px]"
               style={{
                 // maxWidth: "1500px",
-                borderRadius: "32px",
                 backgroundSize: "cover",
               }}
             >
+              {pins?.length > 0 && (
               <div className="flex justify-center items-center md:items-start flex-initial">
                 <img
                   src={pinDetail?.image && urlFor(pinDetail?.image).url()}
-                  className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] max-h-heightImg"
+                  className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] "
+                  style={
+                    !user
+                      ? { maxHeight: "calc(100vh - (4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))" }
+                      : { maxHeight: "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))" }
+                  }
                   alt="user-post"
                   id="pinImage"
                 />
               </div>
+              )}
+              {!pins?.length > 0 && (
+              <div className="flex justify-center items-center md:items-start flex-initial">
+                <img
+                  src={pinDetail?.image && urlFor(pinDetail?.image).url()}
+                  className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] "
+                  style={
+                    !user
+                      ? { maxHeight: "calc(100vh - (4px + 4px + 8px + 8px + (4px + 8px)))" }
+                      : { maxHeight: "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px)))" }
+                  }
+                  alt="user-post"
+                  id="pinImage"
+                />
+              </div>
+              )}
+
+
               {/* Right Side Box of Pin */}
               <div className="w-full p-5 flex-1">
                 <div className="flex items-center justify-between flex-col lg:flex-row">
@@ -144,7 +180,7 @@ const PinDetail = ({ user }) => {
                   {/* Is there comments? */}
                   {pinDetail?.comments?.map((item) => (
                     <div
-                      className="flex flex-col w-full h-fit mb-4"
+                      className="flex flex-col w-full h-fit mb-3"
                       key={item.comment}
                     >
                       <div className="flex gap-2 mt-2 items-center bg-sd_l_bg_default dark:bg-gh-bg-primary rounded-lg justify-between p-1">
@@ -163,20 +199,20 @@ const PinDetail = ({ user }) => {
                         </div>
                       </div>
                       {/* Like and share icon */}
-                      <div className="flex flex-row gap-10 mt-1 ml-1 justify-around">
+                      <div className="flex flex-row gap-10 mt-1 ml-1 justify-end text-sm">
                         <button className="flex flex-row items-center">
-                          <AiOutlineHeart fontSize={20} className="mr-1" />
+                          <AiOutlineHeart fontSize={16} className="mr-1" />
                           Like
                         </button>
                         <button className="flex flex-row items-center">
-                          <GoCommentDiscussion fontSize={20} className="mr-1" />
+                          <GoCommentDiscussion fontSize={16} className="mr-1" />
                           Reply
                         </button>
                         {/* If user has create the comment, he/she can delete it */}
                         {/* Erase comment button */}
                         {pinDetail.postedBy?._id === user?._id && (
                           <button className="flex flex-row items-center">
-                            <GoTrashcan fontSize={20} className="mr-1" />
+                            <GoTrashcan fontSize={16} className="mr-1" />
                             Delete
                           </button>
                         )}
@@ -187,12 +223,12 @@ const PinDetail = ({ user }) => {
                 {/* Where user add the comment */}
                 {/* If the user is login return input field */}
                 {user && (
-                  <div className="flex flex-wrap mt-8 gap-3">
+                  <div className="flex flex-wrap mt-8 gap-3 items-center">
                     {/* Link to user profile */}
                     <Link to={`/user-profile/${user._id}`}>
                       <img
                         src={user.image}
-                        className="w-7 h-7 rounded-full cursor-pointer border border-solid border-cyan-400"
+                        className="w-10 h-10 rounded-full cursor-pointer border border-solid border-cyan-400"
                         alt="user-profile"
                       />
                     </Link>
@@ -214,7 +250,7 @@ const PinDetail = ({ user }) => {
                 )}
               </div>
             </div>
-          </div>
+          </div>          
         </div>
       )}
       {pins?.length > 0 && (

@@ -5,6 +5,7 @@
 body{
     font-family: 'Titillium Web', sans-serif;
 }
+/* scrollbar is not visible if it's not necesary */
 .hide-scrollbar::-webkit-scrollbar{
     display: none;
 }
@@ -14,3 +15,36 @@ body{
 
 
 
+/*Webkit*/
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar:window-inactive {
+    display: none;
+  }
+  ::-webkit-scrollbar-track-piece {
+    border-radius: 2px;
+    background-color: rgb(33, 84, 135);
+    background-clip: content-box;
+    border-radius: 6px;
+    border: solid 1px transparent;
+  }
+  ::-webkit-scrollbar-track-piece:decrement {
+    background: rgb(100, 100, 100);
+    background-clip: content-box;
+    border: solid 1px transparent;
+  }
+  ::-webkit-scrollbar-thumb  {
+    height: 5px;
+    width: 4px;
+    background-color: rgb(0, 120, 184);
+    border-radius: 6px;
+    box-shadow: 0 3px 6px -2px rgba(92, 0, 92, 0.553);
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent ;
+  }
+  ::-webkit-scrollbar-track-piece:no-button {
+    background-color: rgb(100, 100, 100);
+  }
