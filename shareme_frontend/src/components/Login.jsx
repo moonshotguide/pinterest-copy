@@ -1,6 +1,5 @@
 import React from "react";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-// import LoginGithub from 'react-login-github';
 import { useNavigate } from "react-router-dom";
 import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
@@ -19,7 +18,7 @@ const Login = () => {
       userName: name,
       image: picture
     }
-    sessionStorage.setItem('user', JSON.stringify(decoded));
+    localStorage.setItem('user', JSON.stringify(decoded));
     console.log(decoded);
     client.createIfNotExists(doc)
       .then(() => {

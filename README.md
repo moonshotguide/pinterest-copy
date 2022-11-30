@@ -1,4 +1,8 @@
 # pinterest-copy
+Dependencies to need
+npm i @react-oauth/google
+npm i react-google-login
+npm i gapi-script
 
 Neumorphism Style
 https://demo.themesberg.com/neumorphism-ui/html/components/all.html
