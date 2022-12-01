@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
+import { gapi } from "gapi-script";
+
 import {
   GoogleLogin,
   GoogleLogout,
   GoogleOAuthProvider,
 } from "react-google-login";
-import { gapi } from "gapi-script";
+
 
 import {
   userCreatedPinsQuery,
   userQuery,
   userSavedPinsQuery,
 } from "../utils/data";
+
 import { client } from "../client";
 import jwt_decode from "jwt-decode";
 import MasonryLayout from "./MasonryLayout";
 import Spinner from "./Spinner";
 
-const randomImage = "https://dummyimage.com/1600x900/000/fff";
-
 const activeBtnStyles =
   "bg-red-500 text-white font-semibold p-2 rounded-full w-20 outline-none";
 const notActiveBtnStyles =
-  "bg-primary mr-4 text-black text-white font-semibold p-2 rounded-full w-20 outline-none";
+  "bg-primary mr-4 text-black dark:text-white font-semibold p-2 rounded-full w-20 outline-none";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -33,14 +34,28 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
-  // const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
-
   useEffect(() => {
     const query = userQuery(userId);
     client.fetch(query).then((data) => {
       setUser(data[0]);
     });
   }, [userId]);
+
+
+
+  useEffect(() => {
+    if (text === "Created") {
+      const createdPinsQuery = userCreatedPinsQuery(userId);
+      client.fetch(createdPinsQuery).then((data) => {
+        setPins(data);
+      });
+    } else {
+      const savedPinsQuery = userSavedPinsQuery(userId);
+      client.fetch(savedPinsQuery).then((data) => {
+        setPins(data);
+      });
+    }
+  }, [text, userId]);
 
   const logout = () => {
     localStorage.clear();
@@ -50,15 +65,10 @@ const UserProfile = () => {
   if (!user) return <Spinner message="Loading Profile.. " />;
 
   return (
-    <div className="relative pb-2 h-full justify-center items-center">
+    <div className="relative pb-2 h-full justify-center items-center text-">
       <div className="flex flex-col pb-5">
         <div className="relative flex flex-col mb-7">
           <div className="flex flex-col justify-center items-center">
-            <img
-              src={randomImage}
-              className="w-full h-370 2xl:h-510 shadow-lg object-cover"
-              alt="banner-Picture"
-            />
             <img
               src={user?.image}
               className="rounded-full w-20 h-20 mt-10 shadow-xl object-cover"
@@ -74,11 +84,12 @@ const UserProfile = () => {
                   render={(renderProps) => (
                     <button
                       type="button"
-                      className="bg-red-500 p-2 rounded-full cursor-pointer outline-none shadow-md flex text-white gap-[0.5rem] px-[0.5rem] py-[0.25rem] text-xl items-center"
+                      style={{display: 'flex', gap: '0.25rem'}}
+                      className="text-sm px-5 py-2.5 mr-2 mb-2 font-medium       bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
                     >
-                      <AiOutlineLogout color="white" fontSize={25} />
+                      <AiOutlineLogout fontSize={20} />
                       Logout
                     </button>
                   )}
@@ -86,7 +97,6 @@ const UserProfile = () => {
                   cookiePolicy="single_host_origin"
                 />
               )}
-              {/* <GoogleLogout clientId={process.env.REACT_APP_GOOGLE_API_TOKEN} buttonText="Log out" onLogoutSuccess={logout} /> */}
             </div>
           </div>
         </div>
@@ -96,7 +106,7 @@ const UserProfile = () => {
             type="button"
             onClick={(e) => {
               setText(e.target.textContent);
-              setActiveBtn('created');
+              setActiveBtn("created");
             }}
             className={`${
               activeBtn === "created" ? activeBtnStyles : notActiveBtnStyles
@@ -108,7 +118,7 @@ const UserProfile = () => {
             type="button"
             onClick={(e) => {
               setText(e.target.textContent);
-              setActiveBtn('saved');
+              setActiveBtn("saved");
             }}
             className={`${
               activeBtn === "saved" ? activeBtnStyles : notActiveBtnStyles
@@ -117,8 +127,17 @@ const UserProfile = () => {
             Saved
           </button>
         </div>
+
+        {pins?.length ? (
+          <div className="px-2">
+            <MasonryLayout pins={pins} />
+          </div>
+        ) : (
+        <div className="flex justify-center font-bold items-center w-full text-xl mt-2">
+          No pins found!
+        </div>
+        )}
       </div>
-      UserProfile
     </div>
   );
 };

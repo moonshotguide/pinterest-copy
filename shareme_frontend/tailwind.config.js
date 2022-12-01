@@ -112,6 +112,11 @@ module.exports = {
         'gh-bg-default': '#0d1117',
         'gh-bg-secondary': '#010409',
         'gh_bg_button':'#0ea5e9',
+        //dark
+        'gh_btn_primary':'#262b40',
+        'gh_btn_primary_hover':'#1d2030',
+        'gh_btn_alternative':'#1E40AF',
+        'gh_btn_alternative_hover':'#2563EB',
 
         // SD light mode
         'sd_l_text_primary':'#000000',
@@ -123,8 +128,11 @@ module.exports = {
         'sd_l_bg_default':'#fff',
         'sd_l_bg_secondary':'#000000',
         'sd_l_bg_button':'#F03200',
-
-
+        //light
+        'sd_btn_primary':'#f2f4f6',
+        'sd_btn_primary_hover':'#e3e7ec',
+        'sd_btn_alternative':'#F03200',
+        'sd_btn_alternative_hover':'#a91636'
       },
       // backgroundImage: {
       //   'hero-pattern': "url('./assets/box.svg')"
@@ -134,11 +142,19 @@ module.exports = {
         primary: "#FAFAFA",
         secColor: "#efefef",
         navColor: "#BEBEBE",
+        light: "#1f2937",
       },
       backgroundColor: {
         mainColor: "#FBF8F9",
         secondaryColor: "#F0F0F0",
         blackOverlay: "rgba(0, 0 ,0 ,0.7)",
+      },
+      boxShadow: {
+        'primary': 'inset 0 1px 0 hsl(0deg 0% 100% / 15%), 0 1px 1px rgb(17 24 39 / 8%)',
+        'active': 'inset 0 4px 6px rgb(17 24 39 / 25%)',
+      },
+      borderWidth: {
+        'default' : '0.0625rem',
       },
       keyframes: {
         "slide-in": {

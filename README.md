@@ -12,8 +12,13 @@ https://hype4.academy/tools/glassmorphism-generator
 
 Icon Tailwind
 https://demo.themesberg.com/windster-pro/
+https://flowbite.com/docs/components/buttons/
 
 New Style Dashboard
 https://coderthemes.com/hyper_2/saas/index.html
+https://demo.themesberg.com/pixel-pro/v5/index.html
+https://demo.themesberg.com/volt-pro-react/#/components/buttons
 
-Tutorial 3:53:26
+
+Tutorial 4:23:26
+

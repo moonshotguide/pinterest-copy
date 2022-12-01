@@ -11,17 +11,6 @@ import { categories } from "../utils/data";
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-slate-600 dark:text-slate-400 hover:text-black hover:font-semibold dark:hover:text-white border-slate-400 transition-all duration-200 ease-in-out capitalize';
 const isActiveStyle = 'flex items-center px-5 gap-3 text-red-600 dark:text-sky-400 font-extrabold border-r-2 border-black dark:border-slate-400 transition-all duration-200 ease-in-out capitalize';
 
-//Indeed it's came from sanity json backend, this list is just for testing
-// const categories = [
-//   { name: 'Animals' },
-//   { name: 'Wallpaper' },
-//   { name: 'Photography' },
-//   { name: 'Gaming' },
-//   { name: 'Coding' },
-//   { name: 'Other' },
-//   { name: 'Cars' }
-// ]
-
 const Sidebar = ({ user, closeToggle }) => {
   //close sidebar when something
   const handleCloseSidebar = () => {
@@ -58,6 +47,7 @@ const Sidebar = ({ user, closeToggle }) => {
               onClick={handleCloseSidebar}
               key={category.name}
             >
+              {/* <img src={category.image} alt="category" className="w-8 h-8 rounded-full shadow-sm" /> */}
               <BiCategoryAlt/> {category.name}
             </NavLink>
           )) }
@@ -68,9 +58,9 @@ const Sidebar = ({ user, closeToggle }) => {
         // If the user not exists, it render next Link
         <Link
         to={`user-profile/${user._id}`}
-        className='flex my-5 mb-3 gap-2 p-1 mx-1 items-center rounded-xl shadow-lg text-white bg-sd_l_bg_secondary hover:bg-sd_l_button_hover dark:hover:bg-gh_button_hover dark:bg-gh_bg_button '
+        className='w-fit flex my-5 mb-3 gap-2 px-2 py-1.5 mx-auto items-center text-sm font-medium text-center          bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_alternative_hover dark:border-transparent rounded-lg'
         >
-          <img src={user.image} alt="user-profile" className="w-10 h-10 rounded-full rounded-full border-solid border-2 border-cyan-400"/>
+          <img src={user.image} alt="user-profile" className="w-7 h- rounded-full rounded-full"/>
           <p>{user.userName}</p>
         </Link>
       )}

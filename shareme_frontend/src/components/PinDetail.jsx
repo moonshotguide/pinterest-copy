@@ -3,8 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GoCommentDiscussion } from "react-icons/go";
-import { GoDesktopDownload } from "react-icons/go";
+// import { GoDesktopDownload } from "react-icons/go";
 import { GoTrashcan } from "react-icons/go";
+import { HiCloudDownload } from "react-icons/hi";
 import { client, urlFor } from "../client";
 import MasonryLayout from "./MasonryLayout";
 import { pinDetailMorePinQuery, pinDetailQuery } from "../utils/data";
@@ -27,8 +28,6 @@ const PinDetail = ({ user }) => {
   //   .matchMedia("(min-width: 419px)")
   //   .addEventListener('change', e => setMatches( e.matches ));
   // }, []);
-
-
 
   const fetchPinDetails = () => {
     const query = pinDetailQuery(pinId);
@@ -76,7 +75,6 @@ const PinDetail = ({ user }) => {
 
   if (!pinDetail) return <Spinner message="Loading Pin" />;
 
-  
   return (
     <>
       {pinDetail && (
@@ -89,9 +87,7 @@ const PinDetail = ({ user }) => {
             backgroundImage: `url(${pinDetail.image?.asset?.url})`,
           }}
         >
-          <div
-            className="backdrop-blur-sm bg-white/3 p-6 w-full h-full android:p-2 rounded-[32px]"
-          >
+          <div className="backdrop-blur-sm bg-white/3 p-6 w-full h-full android:p-2 rounded-[32px]">
             <div
               className="flex xl:flex-row flex-col bg-sd_l_bg_default p-1 dark:bg-gh-bg-default rounded-[32px]"
               style={{
@@ -100,50 +96,61 @@ const PinDetail = ({ user }) => {
               }}
             >
               {pins?.length > 0 && (
-              <div className="flex justify-center items-center md:items-start flex-initial">
-                <img
-                  src={pinDetail?.image && urlFor(pinDetail?.image).url()}
-                  className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] "
-                  style={
-                    !user
-                      ? { maxHeight: "calc(100vh - (4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))" }
-                      : { maxHeight: "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))" }
-                  }
-                  alt="user-post"
-                  id="pinImage"
-                />
-              </div>
+                <div className="flex justify-center items-center md:items-start flex-initial">
+                  <img
+                    src={pinDetail?.image && urlFor(pinDetail?.image).url()}
+                    className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px] "
+                    style={
+                      !user
+                        ? {
+                            maxHeight:
+                              "calc(100vh - (4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))",
+                          }
+                        : {
+                            maxHeight:
+                              "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))",
+                          }
+                    }
+                    alt="user-post"
+                    id="pinImage"
+                  />
+                </div>
               )}
               {!pins?.length > 0 && (
-              <div className="flex justify-center items-center md:items-start flex-initial">
-                <img
-                  src={pinDetail?.image && urlFor(pinDetail?.image).url()}
-                  className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px]"  
-                  style={
-                    !user
-                      ? { maxHeight: "calc(100vh - (4px + 4px + 8px + 8px + (4px + 8px)))" }
-                      : { maxHeight: "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px)))" }
-                  }
-                  alt="user-post"
-                  id="pinImage"
-                />
-              </div>
+                <div className="flex justify-center items-center md:items-start flex-initial">
+                  <img
+                    src={pinDetail?.image && urlFor(pinDetail?.image).url()}
+                    className="rounded-t-[30px] rounded-b-lg xl:rounded-[30px]"
+                    style={
+                      !user
+                        ? {
+                            maxHeight:
+                              "calc(100vh - (4px + 4px + 8px + 8px + (4px + 8px)))",
+                          }
+                        : {
+                            maxHeight:
+                              "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px)))",
+                          }
+                    }
+                    alt="user-post"
+                    id="pinImage"
+                  />
+                </div>
               )}
-
 
               {/* Right Side Box of Pin */}
               <div className="w-full p-5 flex-1">
                 <div className="flex items-center justify-between flex-col lg:flex-row">
                   <div className="flex gap-2 items-center">
-                    <a
-                      href={`${pinDetail.image.asset.url}?dl=`}
-                      download
-                      onClick={(e) => e.stopPropagation()}
-                      className="bg-sd_l_bg_button dark:bg-gh_bg_button w-fit h-9 rounded-full flex items-center justify-center text-sm px-3 hover:shadow-md outline-none text-white dark:text-gh_button_text hover:bg-gh_l_button_hover dark:hover:bg-gh_button_hover"
-                    >
-                      <GoDesktopDownload fontSize={18} className="mr-2" />
-                      Download
-                    </a>
+                      <a
+                        href={`${pinDetail.image.asset.url}?dl=`}
+                        downloadnpm
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-fit h-9 flex items-center justify-center text-sm px-4 py-2 outline-none   bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
+                      >
+                        Download
+                        <HiCloudDownload fontSize={20} className="ml-2" />
+                      </a>
                   </div>
                   <a
                     href={pinDetail.destination}
@@ -241,7 +248,7 @@ const PinDetail = ({ user }) => {
                     />
                     <button
                       type="button"
-                      className="bg-sd_l_bg_button hover:bg-sd_l_button_hover dark:bg-gh_bg_button dark:hover-bg-gh_l_button_hover text-white rounded-full px-6 py-2 font-semibold text-base outline-none"
+                      className="px-6 py-2 outline-none text-white font-semibold text-base    bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
                       onClick={addComment}
                     >
                       {addingComment ? "Posting the comment" : "!Post"}
@@ -250,7 +257,7 @@ const PinDetail = ({ user }) => {
                 )}
               </div>
             </div>
-          </div>          
+          </div>
         </div>
       )}
       {pins?.length > 0 && (
