@@ -19,6 +19,8 @@ https://coderthemes.com/hyper_2/saas/index.html
 https://demo.themesberg.com/pixel-pro/v5/index.html
 https://demo.themesberg.com/volt-pro-react/#/components/buttons
 
+npm install -g npm@latest --force
+
 
 Tutorial 4:23:26
 

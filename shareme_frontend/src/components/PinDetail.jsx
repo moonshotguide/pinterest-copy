@@ -108,7 +108,7 @@ const PinDetail = ({ user }) => {
                           }
                         : {
                             maxHeight:
-                              "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (4px + 8px) + (32px + 32px + 16px)))",
+                              "calc(100vh - ((48px + 20px + 12px) + 4px + 4px + 8px + 8px + (32px + 32px + 16px)))",
                           }
                     }
                     alt="user-post"
