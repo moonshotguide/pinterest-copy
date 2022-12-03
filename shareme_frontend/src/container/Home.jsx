@@ -7,8 +7,8 @@ import { Sidebar, UserProfile } from "../components";
 import Pins from "./Pins";
 import { userQuery } from "../utils/data";
 import { client } from "../client";
-import logoWhite from "../assets/logowhite.png";
-import logo from "../assets/logo.png";
+import logoWhite from "../assets/logowhite2.png";
+import logo from "../assets/logo2.png";
 import { fetchUser } from "../utils/fetchUser";
 
 const Home = ( { }) => {

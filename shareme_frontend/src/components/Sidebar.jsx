@@ -3,8 +3,8 @@ import { navLink, Link, NavLink } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
 import { BiCategoryAlt } from "react-icons/bi";
 import { IoIosArrowForward } from "react-icons/io";
-import logoWhite from "../assets/logowhite.png";
-import logo from "../assets/logo.png";
+import logoWhite from "../assets/logowhite2.png";
+import logo from "../assets/logo2.png";
 
 import { categories } from "../utils/data";
 

@@ -18,9 +18,9 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
   // let alreadySaved = !!(save?.filter((item) => item.postedBy.id === user?.sub));
   let alreadySaved = !!(save?.filter((item) => item?.postedBy?._id === user?.sub));
 
-  console.log(save);
-  console.log(user?.sub);
-  console.log(alreadySaved);
+  // console.log(save);
+  // console.log(user?.sub);
+  // console.log(alreadySaved);
 
   //Explanation
   // 1, [2, 3, 1] (filter)-> [1].length -> 1 -> !1 -> false -> !false -> true
