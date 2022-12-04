@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
-import { gapi } from "gapi-script";
 
-import {
-  GoogleLogin,
-  GoogleLogout,
-  GoogleOAuthProvider,
-} from "react-google-login";
-
+import { GoogleLogout } from "react-google-login";
 
 import {
   userCreatedPinsQuery,
@@ -17,7 +11,6 @@ import {
 } from "../utils/data";
 
 import { client } from "../client";
-import jwt_decode from "jwt-decode";
 import MasonryLayout from "./MasonryLayout";
 import Spinner from "./Spinner";
 
@@ -40,8 +33,6 @@ const UserProfile = () => {
       setUser(data[0]);
     });
   }, [userId]);
-
-
 
   useEffect(() => {
     if (text === "Created") {
@@ -77,14 +68,14 @@ const UserProfile = () => {
             <h1 className="font-semibold text-2xl text-center m-3">
               {user?.userName}
             </h1>
-            <div className="absolute top-0 z-1 right-0 p-2">
+            <div className="absolute top-0 z-10 right-0 p-2">
               {userId === user._id && (
                 <GoogleLogout
                   clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
                   render={(renderProps) => (
                     <button
                       type="button"
-                      style={{display: 'flex', gap: '0.25rem'}}
+                      style={{ display: "flex", gap: "0.25rem" }}
                       className="text-sm px-5 py-2.5 mr-2 mb-2 font-medium       bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
@@ -133,9 +124,9 @@ const UserProfile = () => {
             <MasonryLayout pins={pins} />
           </div>
         ) : (
-        <div className="flex justify-center font-bold items-center w-full text-xl mt-2">
-          No pins found!
-        </div>
+          <div className="flex justify-center font-bold items-center w-full text-xl mt-2">
+            No pins found!
+          </div>
         )}
       </div>
     </div>

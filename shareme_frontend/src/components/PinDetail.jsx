@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GoCommentDiscussion } from "react-icons/go";
 // import { GoDesktopDownload } from "react-icons/go";
 import { GoTrashcan } from "react-icons/go";
 import { HiCloudDownload } from "react-icons/hi";
+import { GiOverkill } from "react-icons/gi";
 import { client, urlFor } from "../client";
 import MasonryLayout from "./MasonryLayout";
 import { pinDetailMorePinQuery, pinDetailQuery } from "../utils/data";
@@ -17,6 +18,9 @@ const PinDetail = ({ user }) => {
   const [pinDetail, setPinDetail] = useState(null);
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
+  const [popup, setPopup] = useState(false);
+
+  const navigate = useNavigate();
 
   // Aplica una condicion de estilos para tamaños de pantalla Android
   // const [matches, setMatches] = useState(
@@ -71,6 +75,14 @@ const PinDetail = ({ user }) => {
           setAddingComment(false);
         });
     }
+  };
+
+  const deletePin = (id) => {
+    client.delete(id).then(() => {
+      window.location.reload();
+      navigate(-1);
+      // setSavingPost(false);
+    });
   };
 
   if (!pinDetail) return <Spinner message="Loading Pin" />;
@@ -142,15 +154,15 @@ const PinDetail = ({ user }) => {
               <div className="w-full p-5 flex-1">
                 <div className="flex items-center justify-between flex-col lg:flex-row">
                   <div className="flex gap-2 items-center">
-                      <a
-                        href={`${pinDetail.image.asset.url}?dl=`}
-                        downloadnpm
-                        onClick={(e) => e.stopPropagation()}
-                        className="w-fit h-9 flex items-center justify-center text-sm px-4 py-2 outline-none   bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
-                      >
-                        Download
-                        <HiCloudDownload fontSize={20} className="ml-2" />
-                      </a>
+                    <a
+                      href={`${pinDetail.image.asset.url}?dl=`}
+                      download
+                      onClick={(e) => e.stopPropagation()}
+                      className="w-fit h-9 flex items-center justify-center text-sm px-4 py-2 outline-none   bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
+                    >
+                      Download
+                      <HiCloudDownload fontSize={20} className="ml-2" />
+                    </a>
                   </div>
                   <a
                     href={pinDetail.destination}
@@ -218,10 +230,12 @@ const PinDetail = ({ user }) => {
                         {/* If user has create the comment, he/she can delete it */}
                         {/* Erase comment button */}
                         {pinDetail.postedBy?._id === user?._id && (
-                          <button className="flex flex-row items-center">
-                            <GoTrashcan fontSize={16} className="mr-1" />
-                            Delete
-                          </button>
+                          <>
+                            <button className="flex flex-row items-center">
+                              <GoTrashcan fontSize={16} className="mr-1" />
+                              Delete
+                            </button>
+                          </>
                         )}
                       </div>
                     </div>
@@ -230,29 +244,115 @@ const PinDetail = ({ user }) => {
                 {/* Where user add the comment */}
                 {/* If the user is login return input field */}
                 {user && (
-                  <div className="flex flex-wrap mt-8 gap-3 items-center">
-                    {/* Link to user profile */}
-                    <Link to={`/user-profile/${user._id}`}>
-                      <img
-                        src={user.image}
-                        className="w-10 h-10 rounded-full cursor-pointer border border-solid border-cyan-400"
-                        alt="user-profile"
+                  <div className="flex flex-col items-center">
+                    <div className="flex flex-wrap mt-10 gap-3 w-full items-center">
+                      {/* Link to user profile */}
+                      <Link to={`/user-profile/${user._id}`}>
+                        <img
+                          src={user.image}
+                          className="w-10 h-10 rounded-full cursor-pointer border border-solid border-cyan-400"
+                          alt="user-profile"
+                        />
+                      </Link>
+                      <input
+                        type="text"
+                        className="flex-1 outline-none rounded-2xl border p-2 focus:border-gray-300 dark:border-slate-400/30 border-slate-900/10"
+                        placeholder="Add a comment"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
                       />
-                    </Link>
-                    <input
-                      type="text"
-                      className="flex-1 outline-none rounded-2xl border p-2 focus:border-gray-300 dark:border-slate-400/30 border-slate-900/10"
-                      placeholder="Add a comment"
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                    />
+                      {/* Post comment Button */}
+                      <button
+                        type="button"
+                        className="px-6 py-2 outline-none text-white font-semibold text-base    bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
+                        onClick={addComment}
+                      >
+                        {addingComment ? "Posting the comment" : "!Post"}
+                      </button>
+                    </div>
+                    {/* Delete Pin button */}
                     <button
-                      type="button"
-                      className="px-6 py-2 outline-none text-white font-semibold text-base    bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
-                      onClick={addComment}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setPopup(true);
+                      }}
+                      className="w-fit h-10 mt-5 flex items-center justify-center text-sm px-4 py-2 outline-none   text-white bg-sd_btn_alternative border-sd_btn_alternative_hover text-base hover:bg-sd_btn_alternative_hover active:shadow-active shadow-primary border-default border-solid border-transparent rounded-lg"
                     >
-                      {addingComment ? "Posting the comment" : "!Post"}
+                      Delete Pin
+                      <HiCloudDownload fontSize={20} className="ml-2" />
                     </button>
+                    {/* Popup Banner warning delete pin */}
+                    {pinId?._id === user?.sub && (
+                      <>
+                        {popup && (
+                          <div
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setPopup(false);
+                            }}
+                            id="popup-modal"
+                            tabindex="-1"
+                            class="fixed z-50 p-4 overflow-x-hidden overflow-y-auto inset-0 h-modal h-full backdrop-blur-sm"
+                          >
+                            <div class="top-[calc(25vh)] relative w-full h-full max-w-md md:h-auto m-auto">
+                              <div class="relative bg-sd_l_bg_primary rounded-lg shadow dark:bg-gh-bg-primary">
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setPopup(false);
+                                  }}
+                                  type="button"
+                                  class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    class="w-5 h-5"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                      clip-rule="evenodd"
+                                    ></path>
+                                  </svg>
+                                </button>
+                                <div class="p-6 text-center">
+                                  <GiOverkill
+                                    fontSize={70}
+                                    className="m-auto my-6"
+                                  />
+                                  <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                    Are you sure you want to delete this pin?
+                                  </h3>
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      deletePin(pinId);
+                                    }}
+                                    class="font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2      bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_alternative_hover dark:border-transparent rounded-lg"
+                                  >
+                                    Yes, I'm sure
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setPopup(false);
+                                    }}
+                                    type="button"
+                                    class="rounded-lg text-sm font-medium px-5 py-2.5        bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
+                                  >
+                                    No, cancel
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                 )}
               </div>
