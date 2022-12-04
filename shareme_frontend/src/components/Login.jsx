@@ -19,7 +19,7 @@ const Login = () => {
       image: picture
     }
     localStorage.setItem('user', JSON.stringify(decoded));
-    console.log(decoded);
+    // console.log(decoded);
     client.createIfNotExists(doc)
       .then(() => {
         navigate('/', { replace: true })
