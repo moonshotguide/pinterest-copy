@@ -11,7 +11,7 @@ import logoWhite from "../assets/logowhite2.png";
 import logo from "../assets/logo2.png";
 import { fetchUser } from "../utils/fetchUser";
 
-const Home = ( { }) => {
+const Home = ({}) => {
   // const navigate = useNavigate();
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
@@ -57,7 +57,7 @@ const Home = ( { }) => {
 
           {/* Image Profile */}
           {/* If the user is login return user profile link */}
-          {(user) && (
+          {user && (
             <Link
               to={`user-profile/${user?._id}`}
               className="flex flex-col items-center androidWeb:flex-row-reverse"
@@ -72,12 +72,14 @@ const Home = ( { }) => {
               </h1>
             </Link>
           )}
-
         </div>
         {/* Toggle Button SideBar Elements */}
         {toggleSidebar && (
           // blur filter and width full screen (w-screen) (Optional)
-          <div onClick={() => setToggleSidebar(false)} className="fixed w-screen text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in backdrop-blur-sm">
+          <div
+            onClick={() => setToggleSidebar(false)}
+            className="fixed w-screen text-gray-800 dark:text-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in backdrop-blur-sm"
+          >
             <div className="absolute w-full flex justify-end items-center p-2 overflow-y-auto android:max-w-[15rem] tablet:max-w-xs laptop:max-w-sm desktop:max-w-sm">
               <AiFillCloseCircle
                 fontSize={30}
@@ -92,6 +94,7 @@ const Home = ( { }) => {
       </div>
       {/* Body */}
       <div
+        id="homeFeed"
         className="pb-2 flex-1 h-screen overflow-y-scroll bg-gh-l-bg-default dark:bg-gh-bg-default"
         ref={scrollRef}
       >

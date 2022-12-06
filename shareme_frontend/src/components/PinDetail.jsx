@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { GoCommentDiscussion } from "react-icons/go";
 // import { GoDesktopDownload } from "react-icons/go";
 import { GoTrashcan } from "react-icons/go";
 import { HiCloudDownload } from "react-icons/hi";
+import { HiTrash } from "react-icons/hi";
 import { GiOverkill } from "react-icons/gi";
 import { client, urlFor } from "../client";
 import MasonryLayout from "./MasonryLayout";
@@ -85,12 +86,19 @@ const PinDetail = ({ user }) => {
     });
   };
 
+  // const titleRef = useRef();
+  const handleBackClick = () => {
+    // titleRef.current.scrollIntoView({ top: 0, behavior: "smooth" });
+    document.getElementById('homeFeed').scrollIntoView();
+  };
+
   if (!pinDetail) return <Spinner message="Loading Pin" />;
 
   return (
     <>
       {pinDetail && (
         <div
+          // ref={titleRef}
           className="object-none flex xl:flex-row w-full h-full flex-col bg-sd_l_bg_default dark:bg-gh-bg-default max-w-widthImg"
           style={{
             backgroundSize: "contain",
@@ -152,7 +160,8 @@ const PinDetail = ({ user }) => {
 
               {/* Right Side Box of Pin */}
               <div className="w-full p-5 flex-1">
-                <div className="flex items-center justify-between flex-col lg:flex-row">
+                <div className="flex items-center justify-between flex-col gap-2 xl:gap-0 xl:flex-row">
+                  {/* Download Pin Button */}
                   <div className="flex gap-2 items-center">
                     <a
                       href={`${pinDetail.image.asset.url}?dl=`}
@@ -164,6 +173,22 @@ const PinDetail = ({ user }) => {
                       <HiCloudDownload fontSize={20} className="ml-2" />
                     </a>
                   </div>
+                  {/* Delete Pin button */}
+                  {pinDetail.postedBy?._id === user?._id && (
+                    <button
+                      onClick={(e) => {
+                        handleBackClick();
+                        e.stopPropagation();
+                        setPopup(true);
+                      }}
+                      className="w-fit h-9 flex items-center justify-center text-sm px-4 py-2 outline-none   text-white bg-sd_btn_alternative border-sd_btn_alternative_hover text-base hover:bg-sd_btn_alternative_hover active:shadow-active shadow-primary border-default border-solid border-transparent rounded-lg"
+                    >
+                      Delete Pin
+                      <HiTrash fontSize={20} className="ml-2" />
+                    </button>
+                  )}
+
+                  {/* url link pin */}
                   <a
                     href={pinDetail.destination}
                     target="_blank"
@@ -271,97 +296,83 @@ const PinDetail = ({ user }) => {
                       </button>
                     </div>
 
-
-                    {pinDetail.postedBy?._id === user?._id && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setPopup(true);
-                        }}
-                        className="w-fit h-10 mt-5 flex items-center justify-center text-sm px-4 py-2 outline-none   text-white bg-sd_btn_alternative border-sd_btn_alternative_hover text-base hover:bg-sd_btn_alternative_hover active:shadow-active shadow-primary border-default border-solid border-transparent rounded-lg"
-                      >
-                        Delete Pin
-                        <HiCloudDownload fontSize={20} className="ml-2" />
-                      </button>
-                    )}
-                    {/* Delete Pin button */}
                     {/* Popup Banner warning delete pin */}
-                      <>
-                        {popup && (
-                          <div
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setPopup(false);
-                            }}
-                            id="popup-modal"
-                            tabIndex="-1"
-                            className="fixed z-50 p-4 overflow-x-hidden overflow-y-auto inset-0 h-modal h-full backdrop-blur-sm bg-white/3"
-                          >
-                            <div className="top-[calc(25vh)] relative w-full h-full max-w-md md:h-auto m-auto">
-                              <div className="relative bg-sd_l_bg_primary rounded-lg shadow dark:bg-gh-bg-primary">
+                    <>
+                      {popup && (
+                        <div
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPopup(false);
+                          }}
+                          id="popup-modal"
+                          tabIndex="-1"
+                          className="fixed z-50 p-4 overflow-x-hidden overflow-y-auto inset-0 h-modal h-full backdrop-blur-sm bg-white/3"
+                        >
+                          <div className="top-[calc(25vh)] relative w-full h-full max-w-md md:h-auto m-auto">
+                            <div className="relative bg-sd_l_bg_primary rounded-lg shadow dark:bg-gh-bg-primary">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setPopup(false);
+                                }}
+                                type="button"
+                                className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  className="w-5 h-5"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                  ></path>
+                                </svg>
+                              </button>
+                              <div className="p-6 text-center">
+                                <GiOverkill
+                                  fontSize={70}
+                                  className="m-auto my-6"
+                                />
+                                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                  Are you sure you want to delete this pin?
+                                </h3>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    deletePin(pinId);
+                                  }}
+                                  className="font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2      bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_alternative_hover dark:border-transparent rounded-lg"
+                                >
+                                  Yes, I'm sure
+                                </button>
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     setPopup(false);
                                   }}
                                   type="button"
-                                  className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                  className="rounded-lg text-sm font-medium px-5 py-2.5        bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
                                 >
-                                  <svg
-                                    aria-hidden="true"
-                                    className="w-5 h-5"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      fillRule="evenodd"
-                                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                      clipRule="evenodd"
-                                    ></path>
-                                  </svg>
+                                  No, cancel
                                 </button>
-                                <div className="p-6 text-center">
-                                  <GiOverkill
-                                    fontSize={70}
-                                    className="m-auto my-6"
-                                  />
-                                  <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                    Are you sure you want to delete this pin?
-                                  </h3>
-                                  <button
-                                    type="button"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      deletePin(pinId);
-                                    }}
-                                    className="font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2      bg-sd_btn_alternative border-sd_btn_alternative_hover text-white hover:bg-sd_btn_alternative_hover active:shadow-active dark:bg-gh_btn_alternative dark:hover:bg-gh_btn_alternative_hover shadow-primary border-default border-solid border-sd_btn_alternative_hover dark:border-transparent rounded-lg"
-                                  >
-                                    Yes, I'm sure
-                                  </button>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setPopup(false);
-                                    }}
-                                    type="button"
-                                    className="rounded-lg text-sm font-medium px-5 py-2.5        bg-sd_btn_primary border-sd_btn_primary_hover text-light hover:bg-sd_btn_primary_hover active:shadow-active dark:text-white dark:bg-gh_btn_primary dark:hover:bg-gh_btn_primary_hover shadow-primary border-default border-solid border-sd_btn_primary_hover dark:border-transparent rounded-lg"
-                                  >
-                                    No, cancel
-                                  </button>
-                                </div>
                               </div>
                             </div>
                           </div>
-                        )}
-                      </>
+                        </div>
+                      )}
+                    </>
                   </div>
-                )}  
+                )}
               </div>
             </div>
-          </div>    
-        </div>  
-      )}  
+          </div>
+        </div>
+      )}
       {pins?.length > 0 && (
         <>
           <h2 className="text-center font-bold text-2xl mt-8 mb-4">

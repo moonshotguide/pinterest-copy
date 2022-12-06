@@ -53,8 +53,6 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
     });
   };
 
-  //
-
   return (
     <div className="m-2">
       <div
@@ -120,6 +118,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
               {postedBy?._id === user?.sub && (
                 <button
                   onClick={(e) => {
+                    // handleBackClick();
                     e.stopPropagation();
                     setPopup(true);
                   }}
