@@ -15,7 +15,7 @@ const Home = ({}) => {
   // const navigate = useNavigate();
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
-  const scrollRef = useRef(null);
+  // const scrollRef = useRef(null);
 
   const userInfo = fetchUser();
 
@@ -26,9 +26,9 @@ const Home = ({}) => {
     });
   }, []);
 
-  useEffect(() => {
-    scrollRef.current.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   scrollRef.current.scrollTo(0, 0);
+  // }, []);
 
   return (
     <div className="flex text-slate-900 dark:text-white sm:flex-row flex-col h-screen transition-height duration-75 ease-out">
@@ -94,9 +94,9 @@ const Home = ({}) => {
       </div>
       {/* Body */}
       <div
-        id="homeFeed"
+        id="about"
         className="pb-2 flex-1 h-screen overflow-y-scroll bg-gh-l-bg-default dark:bg-gh-bg-default"
-        ref={scrollRef}
+        // ref={scrollRef}
       >
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />

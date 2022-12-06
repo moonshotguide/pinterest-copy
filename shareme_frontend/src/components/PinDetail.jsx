@@ -87,9 +87,11 @@ const PinDetail = ({ user }) => {
   };
 
   // const titleRef = useRef();
-  const handleBackClick = () => {
+  function handleBackClick() {
+    // Scroll back to the title element...
     // titleRef.current.scrollIntoView({ top: 0, behavior: "smooth" });
-    document.getElementById('homeFeed').scrollIntoView();
+    // document.getElementById('about').scrollIntoView();
+    document.querySelector("#about > div > div.bg-gh-l-bg-default.dark\\:bg-gh-bg-default > div").scrollIntoView({ top: 0, behavior: "smooth" })
   };
 
   if (!pinDetail) return <Spinner message="Loading Pin" />;
