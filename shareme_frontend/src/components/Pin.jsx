@@ -53,6 +53,13 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
     });
   };
 
+  function handleBackClick() {
+    // Scroll back to the title element...
+    // titleRef.current.scrollIntoView({ top: 0, behavior: "smooth" });
+    // document.getElementById('about').scrollIntoView();
+    document.querySelector("#about > div > div.bg-gh-l-bg-default.dark\\:bg-gh-bg-default > div").scrollIntoView({ top: 0, behavior: "smooth" })
+  };
+
   return (
     <div className="m-2">
       <div
@@ -118,7 +125,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
               {postedBy?._id === user?.sub && (
                 <button
                   onClick={(e) => {
-                    // handleBackClick();
+                    handleBackClick();
                     e.stopPropagation();
                     setPopup(true);
                   }}
