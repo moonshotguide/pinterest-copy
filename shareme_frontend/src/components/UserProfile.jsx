@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { GoogleLogout } from "react-google-login";
+import {
+  GoogleLogin,
+  GoogleLogout,
+  GoogleOAuthProvider,
+} from "react-google-login";
+import { gapi } from "gapi-script";
 
 import {
   userCreatedPinsQuery,
@@ -13,6 +18,7 @@ import {
 import { client } from "../client";
 import MasonryLayout from "./MasonryLayout";
 import Spinner from "./Spinner";
+import jwt_decode from "jwt-decode";
 
 const activeBtnStyles =
   "bg-red-500 text-white font-semibold p-2 rounded-full w-20 outline-none";
