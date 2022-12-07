@@ -16,7 +16,7 @@ const MasonryLayout = ({ pins, pin }) => {
   return (
     <>
       <Masonry
-        className="flex animate-slide-fwd bg-black dark:bg-gh-bg-primary rounded-lg p-2 mt-2"
+        className="flex animate-slide-fwd bg-gh_l_button_text dark:bg-gh-bg-primary rounded-lg p-2 mt-2"
         breakpointCols={breakpointColumnsObj}
       >
         {/* if there is no pins, return message No pins  */}
